@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 
 import { Box, Divider, Typography } from "@mui/material";
 import "./anime-info.css";
@@ -10,6 +10,7 @@ import AnimeInfoMainContent from "./AnimeInfoMainContent";
 const AnimeInfoContent = async () => {
   const jikanjs = require("@mateoaranda/jikanjs");
   const searchParams = useSearchParams();
+
   let id = searchParams.get("id");
 
   // let anime = await jikanjs.loadAnime(5514, "full");

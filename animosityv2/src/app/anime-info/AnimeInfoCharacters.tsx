@@ -21,7 +21,6 @@ const AnimeInfoCharacters = (info: AnimeInfoCharactersConfigProps) => {
     { width: 3008, itemsToShow: 8, itemsToScroll: 8 },
   ];
 
-  console.log(info);
   let animeCharacterList = info.characters;
 
   return (

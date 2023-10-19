@@ -3,6 +3,7 @@ import Link from "next/link";
 import React from "react";
 import AnimeInfoCharacters from "./AnimeInfoCharacters";
 import AnimeInfoRecommendedAnime from "./AnimeInfoRecommendedAnime";
+import AnimeInfoRelatedAnime from "./AnimeInfoRelatedAnime";
 
 interface AnimeInfoMainConfigProps {
   anime: any;
@@ -12,7 +13,7 @@ interface AnimeInfoMainConfigProps {
 const AnimeInfoMainContent = (anime: AnimeInfoMainConfigProps) => {
   let animeData = anime.anime;
   let relatedAnime = animeData.relations;
-  console.log(anime);
+
   return (
     <div className='anime-info-main-content-container'>
       <div>
@@ -27,27 +28,7 @@ const AnimeInfoMainContent = (anime: AnimeInfoMainConfigProps) => {
       </div>
       <div>
         <h3>Related Anime</h3>
-        <div>
-          {relatedAnime.map((info) => {
-            let relatedAnime = info.entry;
-            let relatedAnimeType = info.relation;
-
-            return relatedAnime.map((single) => {
-              return (
-                <div>
-                  <Link
-                    href={{
-                      pathname: "/anime-info",
-                      query: { id: single.mal_id },
-                    }}
-                  >
-                    <Typography className='anime-info-related-anime-item'>{`${relatedAnimeType}: ${single.name}`}</Typography>
-                  </Link>
-                </div>
-              );
-            });
-          })}
-        </div>
+        <AnimeInfoRelatedAnime relatedAnime={relatedAnime} />
       </div>
       <div>
         <h3>Characters</h3>
