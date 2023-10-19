@@ -1,2 +1,2 @@
 # animosityV2
-Currently trying to remake my old Animosity site with NextJS
+Currently trying to learn NextJS by remaking my old Animosity anime site. Also using TypeScript this time around.
