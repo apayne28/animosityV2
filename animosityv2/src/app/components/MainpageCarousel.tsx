@@ -73,63 +73,69 @@ const MainpageCarousel = () => {
           </Link>
         </Carousel.Item>
         <Carousel.Item>
-          <ImageList cols={1} rowHeight={1200}>
-            <ImageListItem>
-              <Image src={sg} alt='Steins;Gate' fill />
-              <Carousel.Caption>
-                <Box
-                  sx={{
-                    backgroundColor: "#3B2C35",
-                    // marginLeft: "8%",
-                    // marginRight: "8%",
-                    opacity: 0.8,
-                  }}
-                >
-                  <Typography sx={{ fontSize: 80 }}>Steins;Gate</Typography>
-                </Box>
-              </Carousel.Caption>
-            </ImageListItem>
-          </ImageList>
+          <Link href={{ pathname: "/anime-info", query: { id: 9253 } }}>
+            <ImageList cols={1} rowHeight={1200}>
+              <ImageListItem>
+                <Image src={sg} alt='Steins;Gate' fill />
+                <Carousel.Caption>
+                  <Box
+                    sx={{
+                      backgroundColor: "#3B2C35",
+                      // marginLeft: "8%",
+                      // marginRight: "8%",
+                      opacity: 0.8,
+                    }}
+                  >
+                    <Typography sx={{ fontSize: 80 }}>Steins;Gate</Typography>
+                  </Box>
+                </Carousel.Caption>
+              </ImageListItem>
+            </ImageList>
+          </Link>
         </Carousel.Item>
 
         <Carousel.Item>
-          <ImageList cols={1} rowHeight={1200}>
-            <ImageListItem>
-              <Image src={op} alt='One Piece' fill />
-              <Carousel.Caption>
-                <Box
-                  sx={{
-                    backgroundColor: "#3B2C35",
-                    // marginLeft: "8%",
-                    // marginRight: "8%",
-                    opacity: 0.8,
-                  }}
-                >
-                  <Typography sx={{ fontSize: 80 }}>One Piece</Typography>
-                </Box>
-              </Carousel.Caption>
-            </ImageListItem>
-          </ImageList>
+          <Link href={{ pathname: "/anime-info", query: { id: 21 } }}>
+            <ImageList cols={1} rowHeight={1200}>
+              <ImageListItem>
+                <Image src={op} alt='One Piece' fill />
+                <Carousel.Caption>
+                  <Box
+                    sx={{
+                      backgroundColor: "#3B2C35",
+                      // marginLeft: "8%",
+                      // marginRight: "8%",
+                      opacity: 0.8,
+                    }}
+                  >
+                    <Typography sx={{ fontSize: 80 }}>One Piece</Typography>
+                  </Box>
+                </Carousel.Caption>
+              </ImageListItem>
+            </ImageList>
+          </Link>
         </Carousel.Item>
 
         <Carousel.Item>
-          <ImageList cols={1} rowHeight={1200}>
-            <ImageListItem>
-              <Image src={deathnote4} alt='Death Note' fill />
-              <Carousel.Caption>
-                <Box
-                  sx={{
-                    backgroundColor: "#3B2C35",
-                    // marginLeft: "8%",
-                    // marginRight: "8%",
-                    opacity: 0.8,
-                  }}
-                >
-                  <Typography sx={{ fontSize: 80 }}>Death Note</Typography>
-                </Box>
-              </Carousel.Caption>
-            </ImageListItem>
-          </ImageList>
+          <Link href={{ pathname: "/anime-info", query: { id: 1535 } }}>
+            <ImageList cols={1} rowHeight={1200}>
+              <ImageListItem>
+                <Image src={deathnote4} alt='Death Note' fill />
+                <Carousel.Caption>
+                  <Box
+                    sx={{
+                      backgroundColor: "#3B2C35",
+                      // marginLeft: "8%",
+                      // marginRight: "8%",
+                      opacity: 0.8,
+                    }}
+                  >
+                    <Typography sx={{ fontSize: 80 }}>Death Note</Typography>
+                  </Box>
+                </Carousel.Caption>
+              </ImageListItem>
+            </ImageList>
+          </Link>
         </Carousel.Item>
         <Carousel.Item>
           <ImageList cols={1} rowHeight={1200}>

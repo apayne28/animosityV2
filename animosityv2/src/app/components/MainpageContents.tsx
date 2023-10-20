@@ -33,8 +33,6 @@ const MainpageContents = (info: MainpageProps) => {
     { width: 3008, itemsToShow: 8, itemsToScroll: 8 },
   ];
 
-  console.log(info.upcomingAnimeSeason);
-
   return (
     <div className={styles.homepage_content}>
       <div className={styles.homepage_header_content}>

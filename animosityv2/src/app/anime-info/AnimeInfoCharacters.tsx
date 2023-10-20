@@ -30,7 +30,6 @@ const AnimeInfoCharacters = (info: AnimeInfoCharactersConfigProps) => {
       <Carousel breakPoints={breakPoints}>
         {animeCharacterList.map((character) => {
           let characterEntry = character.character;
-          // console.log(characterEntry);
 
           return (
             <div>

@@ -14,8 +14,6 @@ const AnimeInfoContent = () => {
 
   //Grabs Anime Info
 
-  console.log(id);
-
   return (
     <div className='anime-info-content-container'>
       <AnimeInfoSideContent id={id} />

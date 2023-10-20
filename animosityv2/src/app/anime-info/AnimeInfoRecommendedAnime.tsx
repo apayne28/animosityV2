@@ -23,7 +23,7 @@ const AnimeInfoRecommendedAnime = (info: AnimeInfoMainConfigProps) => {
 
     { width: 3008, itemsToShow: 8, itemsToScroll: 8 },
   ];
-  console.log(animeRecommendationsList);
+
   return (
     <div>
       <Carousel breakPoints={breakPoints}>

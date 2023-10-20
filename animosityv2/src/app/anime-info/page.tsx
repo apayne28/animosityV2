@@ -6,26 +6,38 @@ import styles from "./styles.module.css";
 export const dynamic = "force-dynamic";
 
 async function getAnime(animeId: string | string[] | null) {
-  const animeTemp = await fetch(
-    `https://api.jikan.moe/v4/anime/${animeId}/full`
-  ).then((res) => res.json());
+  try {
+    const animeTemp = await fetch(
+      `https://api.jikan.moe/v4/anime/${animeId}/full`
+    ).then((res) => res.json());
 
-  return animeTemp.data;
+    return animeTemp.data;
+  } catch (error) {
+    console.log("Anime not found");
+  }
 }
 
 async function getAnimeCharacters(animeId: string | string[] | null) {
-  const characterTemp = await fetch(
-    `https://api.jikan.moe/v4/anime/${animeId}/characters`
-  ).then((res) => res.json());
+  try {
+    const characterTemp = await fetch(
+      `https://api.jikan.moe/v4/anime/${animeId}/characters`
+    ).then((res) => res.json());
 
-  return characterTemp.data;
+    return characterTemp.data;
+  } catch {
+    console.log("Anime Character List not found");
+  }
 }
 
 async function getRecommendedAnime(animeId: string | string[] | null) {
-  let recommendedAnimeTemp = await fetch(
-    `https://api.jikan.moe/v4/anime/${animeId}/recommendations`
-  ).then((res) => res.json());
-  return recommendedAnimeTemp.data;
+  try {
+    let recommendedAnimeTemp = await fetch(
+      `https://api.jikan.moe/v4/anime/${animeId}/recommendations`
+    ).then((res) => res.json());
+    return recommendedAnimeTemp.data;
+  } catch {
+    console.log("Anime Recs not found");
+  }
 }
 
 const page = async ({
