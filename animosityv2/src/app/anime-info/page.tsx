@@ -2,6 +2,7 @@ import React from "react";
 import AnimeInfoContent from "./AnimeInfoContent";
 import AnimeInfoSideContent from "./AnimeInfoSideContent";
 import AnimeInfoMainContent from "./AnimeInfoMainContent";
+import "./anime-info.css";
 
 async function getAnime(animeId: string | string[] | null) {
   const animeTemp = await fetch(

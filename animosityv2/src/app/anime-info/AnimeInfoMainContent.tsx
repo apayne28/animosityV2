@@ -18,7 +18,7 @@ const AnimeInfoMainContent = async (info: AnimeInfoMainConfigProps) => {
   let recommendedAnimeData = info.recommendedAnimeData;
 
   return (
-    <div className='anime-info-main-content-container'>
+    <div>
       <div>
         <h3>Synopsis</h3>
         <Typography paragraph>{animeData.synopsis}</Typography>
