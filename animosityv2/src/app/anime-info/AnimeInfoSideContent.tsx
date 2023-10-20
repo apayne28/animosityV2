@@ -16,7 +16,7 @@ interface AnimeInfoSideConfigProps {
   animeData: any;
 }
 
-const AnimeInfoSideContent = async (info: AnimeInfoSideConfigProps) => {
+const AnimeInfoSideContent =  (info: AnimeInfoSideConfigProps) => {
   let animeData = info.animeData;
   return (
     <div className={styles.anime_info_side_content}>
@@ -35,16 +35,16 @@ const AnimeInfoSideContent = async (info: AnimeInfoSideConfigProps) => {
             fill
             sizes='100%'
           /> */}
-          {/* <ImageListItemBar
-            title={info.title}
+          <ImageListItemBar
+            title={animeData.title}
             subtitle={
-              info.title !== info.title_english && (
+              animeData.title !== animeData.title_english && (
                 <Typography sx={{ paddingTop: 1 }}>{`${
-                  info.title_english ? info.title_english : ""
+                  animeData.title_english ? animeData.title_english : ""
                 }`}</Typography>
               )
             }
-          /> */}
+          />
         </ImageListItem>
       </ImageList>
       <div>

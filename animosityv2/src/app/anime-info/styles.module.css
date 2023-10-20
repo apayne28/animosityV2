@@ -14,10 +14,6 @@
   margin-top: 0.3%;
   margin-right: 1%;
 }
-.anime_info_character_list {
-  margin-top: 2%;
-  padding: 1%;
-}
 
 .anime_info_main_content_container {
   background-color: white;
@@ -29,4 +25,16 @@
   width: 90%;
 
   border-radius: 5px;
+}
+.anime_info_character_list {
+  margin-top: 2%;
+  padding: 1%;
+}
+
+.anime_info_main_content_container h3 {
+  background-color: #56e39f;
+  padding: 1%;
+  /* border-radius: 10px; */
+
+  font-size: 26px;
 }

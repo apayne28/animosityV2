@@ -12,7 +12,7 @@ interface AnimeInfoMainConfigProps {
   animeCharacterListData: any;
   recommendedAnimeData: any;
 }
-const AnimeInfoMainContent = async (info: AnimeInfoMainConfigProps) => {
+const AnimeInfoMainContent = (info: AnimeInfoMainConfigProps) => {
   let animeData = info.animeData;
   let relatedAnime = info.animeData.relations;
   let characterData = info.animeCharacterListData;
