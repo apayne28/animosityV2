@@ -173,3 +173,27 @@ export type AnimeDemographics = {
   name: string;
   url: string;
 };
+
+export type AnimeCharacters = {
+  character: AnimeCharacter;
+  role: string;
+  favorites: number;
+};
+
+export type AnimeCharacter = {
+  mal_id: string;
+  url: string;
+  images: {
+    jpg: {
+      image_url: string;
+      small_image_url: string;
+      large_image_url: string;
+    };
+    webp: {
+      image_url: string;
+      small_image_url: string;
+      large_image_url: string;
+    };
+  };
+  name: string;
+};
