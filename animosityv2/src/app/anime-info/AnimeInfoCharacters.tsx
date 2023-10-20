@@ -1,3 +1,4 @@
+"use client";
 import { ImageList, ImageListItem, Box, ImageListItemBar } from "@mui/material";
 import Link from "next/link";
 import React from "react";

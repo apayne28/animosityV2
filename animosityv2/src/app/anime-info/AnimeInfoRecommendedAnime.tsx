@@ -1,3 +1,5 @@
+"use client";
+
 import { ImageList, ImageListItem, Box, ImageListItemBar } from "@mui/material";
 import React from "react";
 import Carousel from "@itseasy21/react-elastic-carousel";
