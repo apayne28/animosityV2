@@ -197,3 +197,15 @@ export type AnimeCharacter = {
   };
   name: string;
 };
+
+export type AnimeRelations = {
+  relation: string;
+  entry: AnimeRelation[];
+};
+
+export type AnimeRelation = {
+  mal_id: number;
+  type: string;
+  name: string;
+  url: string;
+};

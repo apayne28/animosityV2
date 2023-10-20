@@ -3,6 +3,7 @@
 import { Typography } from "@mui/material";
 import Link from "next/link";
 import React from "react";
+import { AnimeRelation, AnimeRelations } from "../../AnimosityTypes";
 
 interface AnimeInfoMainConfigProps {
   relatedAnime: any;
@@ -11,11 +12,11 @@ interface AnimeInfoMainConfigProps {
 const AnimeInfoRelatedAnime = (info: any) => {
   return (
     <div>
-      {info.relatedAnime.map((info) => {
+      {info.relatedAnime.map((info: AnimeRelations) => {
         let relatedAnime = info.entry;
         let relatedAnimeType = info.relation;
 
-        return relatedAnime.map((single) => {
+        return relatedAnime.map((single: AnimeRelation) => {
           return (
             <div>
               <Link
