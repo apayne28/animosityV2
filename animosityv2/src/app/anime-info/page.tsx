@@ -44,9 +44,6 @@ const page = async ({
     characterData,
     recommendedAnimeData,
   ]);
-  //Grabs Anime Info
-
-  //   console.log("page", animeData, characterData, recommendedAnimeData);
 
   return (
     <div className={styles.anime_info_content_container}>

@@ -1,6 +1,5 @@
 "use client";
 import { Typography } from "@mui/material";
-import Link from "next/link";
 import React from "react";
 import AnimeInfoCharacters from "./AnimeInfoCharacters";
 import AnimeInfoRecommendedAnime from "./AnimeInfoRecommendedAnime";
@@ -17,7 +16,7 @@ const AnimeInfoMainContent = (info: AnimeInfoMainConfigProps) => {
   let relatedAnime = info.animeData.relations;
   let characterData = info.animeCharacterListData;
   let recommendedAnimeData = info.recommendedAnimeData;
-
+  console.log(recommendedAnimeData);
   return (
     <div className={styles.anime_info_main_content_container}>
       <div>
