@@ -6,13 +6,26 @@ import AnimeInfoRecommendedAnime from "./AnimeInfoRecommendedAnime";
 import AnimeInfoRelatedAnime from "./AnimeInfoRelatedAnime";
 
 interface AnimeInfoMainConfigProps {
-  anime: any;
-  characters: any;
-  recommendations: any;
+  id: string | null;
 }
-const AnimeInfoMainContent = (anime: AnimeInfoMainConfigProps) => {
-  let animeData = anime.anime;
+const AnimeInfoMainContent = async (info: AnimeInfoMainConfigProps) => {
+  const animeTemp = await fetch(
+    `https://api.jikan.moe/v4/anime/${info.id}/full`
+  ).then((res) => res.json());
+
+  let animeData = animeTemp.data;
   let relatedAnime = animeData.relations;
+
+  const characterTemp = await fetch(
+    `https://api.jikan.moe/v4/anime/${info.id}/characters`
+  ).then((res) => res.json());
+
+  let characterData = characterTemp.data;
+
+  let recommendedAnimeTemp = await fetch(
+    `https://api.jikan.moe/v4/anime/${info.id}/recommendations`
+  ).then((res) => res.json());
+  let recommendedAnimeData = recommendedAnimeTemp.data;
 
   return (
     <div className='anime-info-main-content-container'>
@@ -32,11 +45,11 @@ const AnimeInfoMainContent = (anime: AnimeInfoMainConfigProps) => {
       </div>
       <div>
         <h3>Characters</h3>
-        <AnimeInfoCharacters characters={anime.characters} />
+        <AnimeInfoCharacters characters={characterData} />
       </div>
       <div>
         <h3>Recommended Anime</h3>
-        <AnimeInfoRecommendedAnime recommendations={anime.recommendations} />
+        <AnimeInfoRecommendedAnime recommendations={recommendedAnimeData} />
       </div>
     </div>
   );
