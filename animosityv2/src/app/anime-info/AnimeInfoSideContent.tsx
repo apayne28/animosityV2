@@ -11,13 +11,22 @@ import {
 import React from "react";
 import Image from "next/image";
 import styles from "./styles.module.css";
+import {
+  AnimeObject,
+  AnimeProducer,
+  AnimeLicensor,
+  AnimeStudios,
+  AnimeGenres,
+  AnimeDemographics,
+  AnimeThemes,
+} from "../../AnimosityTypes";
 
 interface AnimeInfoSideConfigProps {
   animeData: any;
 }
 
-const AnimeInfoSideContent =  (info: AnimeInfoSideConfigProps) => {
-  let animeData = info.animeData;
+const AnimeInfoSideContent = (info: AnimeInfoSideConfigProps) => {
+  let animeData: AnimeObject = info.animeData;
   return (
     <div className={styles.anime_info_side_content}>
       <ImageList cols={1}>
@@ -179,14 +188,14 @@ const AnimeInfoSideContent =  (info: AnimeInfoSideConfigProps) => {
           </Typography>
           <Typography sx={{ padding: "2%", fontSize: 19 }}>{`Producers: ${
             animeData.producers.length > 0
-              ? animeData.producers.map((producers: string) =>
+              ? animeData.producers.map((producers: AnimeProducer) =>
                   producers ? ` ${producers.name} ` : "N/A"
                 )
               : "Unknown"
           }`}</Typography>
           <Typography sx={{ padding: "2%", fontSize: 19 }}>{`Licensors: ${
             animeData.licensors.length
-              ? animeData.licensors.map((licensors: string) =>
+              ? animeData.licensors.map((licensors: AnimeLicensor) =>
                   licensors ? ` ${licensors.name} ` : "N/A"
                 )
               : "Unknown"
@@ -194,7 +203,7 @@ const AnimeInfoSideContent =  (info: AnimeInfoSideConfigProps) => {
 
           <Typography sx={{ padding: "2%", fontSize: 19 }}>{`Studios: ${
             animeData.studios.length > 0
-              ? animeData.studios.map((studios: string) =>
+              ? animeData.studios.map((studios: AnimeStudios) =>
                   studios ? ` ${studios.name} ` : "N/A"
                 )
               : "Unknown"
@@ -202,19 +211,19 @@ const AnimeInfoSideContent =  (info: AnimeInfoSideConfigProps) => {
 
           <Typography
             sx={{ padding: "2%", fontSize: 19 }}
-          >{`Genres: ${animeData.genres.map((genres: string) =>
+          >{`Genres: ${animeData.genres.map((genres: AnimeGenres) =>
             genres ? ` ${genres.name} ` : "Unknown"
           )}`}</Typography>
           <Typography sx={{ padding: "2%", fontSize: 19 }}>{`Theme: ${
             animeData.themes.length > 0
-              ? animeData.themes.map((themes: string) =>
+              ? animeData.themes.map((themes: AnimeThemes) =>
                   themes ? ` ${themes.name} ` : "N/A"
                 )
               : "Unknown"
           }`}</Typography>
           <Typography sx={{ padding: "2%", fontSize: 19 }}>{`Demographics: ${
             animeData.demographics.length > 0
-              ? animeData.demographics.map((demographics: string) =>
+              ? animeData.demographics.map((demographics: AnimeDemographics) =>
                   demographics ? ` ${demographics.name} ` : "N/A"
                 )
               : "Unknown"

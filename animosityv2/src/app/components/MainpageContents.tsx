@@ -57,7 +57,7 @@ const MainpageContents = (info: MainpageProps) => {
       </div>
       <Box sx={{ paddingBottom: "3%" }} data-testid='spring-anime-carousel'>
         <Carousel breakPoints={breakPoints}>
-          {info.currentAnimeSeason.map((anime, aniKey) => {
+          {info.currentAnimeSeason.map((anime, aniKey: React.Key) => {
             return (
               // <Grid item className='individual-featured-anime-container'>
               <div key={aniKey} style={{ width: "95%" }}>
@@ -114,7 +114,7 @@ const MainpageContents = (info: MainpageProps) => {
       </div>
       <Box sx={{ paddingBottom: "3%" }} data-testid='summer-anime-carousel'>
         <Carousel breakPoints={breakPoints}>
-          {info.upcomingAnimeSeason.map((anime, aniKey) => {
+          {info.upcomingAnimeSeason.map((anime, aniKey: React.Key) => {
             return (
               // <Grid item className='individual-featured-anime-container'>
               <div key={aniKey} style={{ width: "95%" }}>
