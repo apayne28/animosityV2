@@ -5,6 +5,7 @@ import React from "react";
 import AnimeInfoCharacters from "./AnimeInfoCharacters";
 import AnimeInfoRecommendedAnime from "./AnimeInfoRecommendedAnime";
 import AnimeInfoRelatedAnime from "./AnimeInfoRelatedAnime";
+import styles from "./styles.module.css";
 
 interface AnimeInfoMainConfigProps {
   animeData: any;
@@ -18,7 +19,7 @@ const AnimeInfoMainContent = async (info: AnimeInfoMainConfigProps) => {
   let recommendedAnimeData = info.recommendedAnimeData;
 
   return (
-    <div>
+    <div className={styles.anime_info_main_content_container}>
       <div>
         <h3>Synopsis</h3>
         <Typography paragraph>{animeData.synopsis}</Typography>

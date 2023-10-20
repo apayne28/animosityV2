@@ -1,24 +1,52 @@
 "use client";
 
-import { Typography, Divider } from "@mui/material";
+import {
+  Typography,
+  Divider,
+  Box,
+  ImageList,
+  ImageListItem,
+  ImageListItemBar,
+} from "@mui/material";
 import React from "react";
 import Image from "next/image";
+import styles from "./styles.module.css";
 
 interface AnimeInfoSideConfigProps {
   animeData: any;
 }
 
 const AnimeInfoSideContent = async (info: AnimeInfoSideConfigProps) => {
-  console.log("side", info.animeData);
   let animeData = info.animeData;
   return (
-    <div>
-      <Image
-        src={animeData.images.jpg.image_url}
-        alt={`${animeData.title} Poster`}
-        height={600}
-        width={400}
-      />
+    <div className={styles.anime_info_side_content}>
+      <ImageList cols={1}>
+        <ImageListItem>
+          <Box
+            component='img'
+            src={animeData.images.jpg.image_url}
+            alt={`${animeData.title} Poster`}
+            sx={{ width: "100%", height: "100%" }}
+          />
+
+          {/* <Image
+            src={animeData.images.jpg.image_url}
+            alt={`${animeData.title} Poster`}
+            fill
+            sizes='100%'
+          /> */}
+          {/* <ImageListItemBar
+            title={info.title}
+            subtitle={
+              info.title !== info.title_english && (
+                <Typography sx={{ paddingTop: 1 }}>{`${
+                  info.title_english ? info.title_english : ""
+                }`}</Typography>
+              )
+            }
+          /> */}
+        </ImageListItem>
+      </ImageList>
       <div>
         <div>
           <Typography

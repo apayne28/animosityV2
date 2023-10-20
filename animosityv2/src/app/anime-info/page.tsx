@@ -1,8 +1,9 @@
 import React from "react";
-import AnimeInfoContent from "./AnimeInfoContent";
 import AnimeInfoSideContent from "./AnimeInfoSideContent";
 import AnimeInfoMainContent from "./AnimeInfoMainContent";
-import "./anime-info.css";
+import styles from "./styles.module.css";
+
+export const dynamic = "force-dynamic";
 
 async function getAnime(animeId: string | string[] | null) {
   const animeTemp = await fetch(
@@ -48,7 +49,7 @@ const page = async ({
   //   console.log("page", animeData, characterData, recommendedAnimeData);
 
   return (
-    <div className='anime-info-content-container'>
+    <div className={styles.anime_info_content_container}>
       <AnimeInfoSideContent animeData={anime} />
 
       <AnimeInfoMainContent

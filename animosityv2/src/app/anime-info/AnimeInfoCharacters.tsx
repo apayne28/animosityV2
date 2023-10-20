@@ -4,6 +4,7 @@ import Link from "next/link";
 import React from "react";
 import Carousel from "@itseasy21/react-elastic-carousel";
 import Image from "next/image";
+import styles from "./styles.module.css";
 
 interface AnimeInfoCharactersConfigProps {
   characters: any;
@@ -25,7 +26,7 @@ const AnimeInfoCharacters = (info: AnimeInfoCharactersConfigProps) => {
   let animeCharacterList = info.characters;
 
   return (
-    <div className='anime-info-character-list'>
+    <div className={styles.anime_info_character_list}>
       <Carousel breakPoints={breakPoints}>
         {animeCharacterList.map((character) => {
           let characterEntry = character.character;

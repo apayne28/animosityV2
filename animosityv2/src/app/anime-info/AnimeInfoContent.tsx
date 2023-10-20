@@ -3,7 +3,7 @@ import React from "react";
 import { useSearchParams } from "next/navigation";
 
 import { Box, Divider, Typography } from "@mui/material";
-import "./anime-info.css";
+
 import AnimeInfoSideContent from "./AnimeInfoSideContent";
 import AnimeInfoMainContent from "./AnimeInfoMainContent";
 
