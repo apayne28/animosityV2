@@ -56,16 +56,16 @@ const d = new Date();
 let currentYear = d.getFullYear();
 let currentSeason = getCurrentSeason();
 
-const getNextSeason = () => {
+const getNextSeason = (season: string | undefined) => {
   let nextSeason = "";
 
-  if (currentSeason === "fall") {
+  if (season === "fall") {
     nextSeason = "winter";
-  } else if (currentSeason === "winter") {
+  } else if (season === "winter") {
     nextSeason = "spring";
-  } else if (currentSeason === "spring") {
+  } else if (season === "spring") {
     nextSeason = "summer";
-  } else if (currentSeason === "summer") {
+  } else if (season === "summer") {
     nextSeason = "fall";
   }
   return nextSeason;
