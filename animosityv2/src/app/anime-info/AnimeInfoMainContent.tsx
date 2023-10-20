@@ -1,3 +1,4 @@
+"use client";
 import { Typography } from "@mui/material";
 import Link from "next/link";
 import React from "react";
@@ -6,26 +7,15 @@ import AnimeInfoRecommendedAnime from "./AnimeInfoRecommendedAnime";
 import AnimeInfoRelatedAnime from "./AnimeInfoRelatedAnime";
 
 interface AnimeInfoMainConfigProps {
-  id: string | null;
+  animeData: any;
+  animeCharacterListData: any;
+  recommendedAnimeData: any;
 }
 const AnimeInfoMainContent = async (info: AnimeInfoMainConfigProps) => {
-  const animeTemp = await fetch(
-    `https://api.jikan.moe/v4/anime/${info.id}/full`
-  ).then((res) => res.json());
-
-  let animeData = animeTemp.data;
-  let relatedAnime = animeData.relations;
-
-  const characterTemp = await fetch(
-    `https://api.jikan.moe/v4/anime/${info.id}/characters`
-  ).then((res) => res.json());
-
-  let characterData = characterTemp.data;
-
-  let recommendedAnimeTemp = await fetch(
-    `https://api.jikan.moe/v4/anime/${info.id}/recommendations`
-  ).then((res) => res.json());
-  let recommendedAnimeData = recommendedAnimeTemp.data;
+  let animeData = info.animeData;
+  let relatedAnime = info.animeData.relations;
+  let characterData = info.animeCharacterListData;
+  let recommendedAnimeData = info.recommendedAnimeData;
 
   return (
     <div className='anime-info-main-content-container'>

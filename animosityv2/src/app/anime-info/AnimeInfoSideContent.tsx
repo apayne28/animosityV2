@@ -1,19 +1,16 @@
+"use client";
 
 import { Typography, Divider } from "@mui/material";
 import React from "react";
 import Image from "next/image";
 
 interface AnimeInfoSideConfigProps {
-  id: string | null;
+  animeData: any;
 }
 
 const AnimeInfoSideContent = async (info: AnimeInfoSideConfigProps) => {
-  const animeTemp = await fetch(
-    `https://api.jikan.moe/v4/anime/${info.id}/full`
-  ).then((res) => res.json());
-
-  let animeData = animeTemp.data;
-
+  console.log("side", info.animeData);
+  let animeData = info.animeData;
   return (
     <div>
       <Image
