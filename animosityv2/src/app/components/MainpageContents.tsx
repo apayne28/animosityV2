@@ -10,6 +10,7 @@ import Link from "next/link";
 import React from "react";
 import Carousel from "@itseasy21/react-elastic-carousel";
 import styles from "../page.module.css";
+import { AnimeObject } from "../../AnimosityTypes";
 
 interface MainpageProps {
   currentAnimeSeason: any;
@@ -57,34 +58,36 @@ const MainpageContents = (info: MainpageProps) => {
       </div>
       <Box sx={{ paddingBottom: "3%" }} data-testid='spring-anime-carousel'>
         <Carousel breakPoints={breakPoints}>
-          {info.currentAnimeSeason.map((anime, aniKey: React.Key) => {
-            return (
-              // <Grid item className='individual-featured-anime-container'>
-              <div key={aniKey} style={{ width: "95%" }}>
-                <ImageList cols={1} rowHeight={500}>
-                  <Link
-                    href={{
-                      pathname: "/anime-info",
-                      query: { id: anime.mal_id },
-                    }}
-                  >
-                    <ImageListItem key={anime.id}>
-                      <Box
-                        component='img'
-                        className='featured-anime-image'
-                        src={anime.images.jpg.image_url}
-                        alt={anime.title}
-                        sx={{ width: "100%", height: "100%" }}
-                      />
-                      <ImageListItemBar title={anime.title} />
-                    </ImageListItem>
-                    {/* <div className='featured-anime-text'>{anime.title}</div> */}
-                  </Link>
-                </ImageList>
-              </div>
-              // </Grid>
-            );
-          })}
+          {info.currentAnimeSeason.map(
+            (anime: AnimeObject, aniKey: React.Key) => {
+              return (
+                // <Grid item className='individual-featured-anime-container'>
+                <div key={aniKey} style={{ width: "95%" }}>
+                  <ImageList cols={1} rowHeight={500}>
+                    <Link
+                      href={{
+                        pathname: "/anime-info",
+                        query: { id: anime.mal_id },
+                      }}
+                    >
+                      <ImageListItem key={anime.mal_id}>
+                        <Box
+                          component='img'
+                          className='featured-anime-image'
+                          src={anime.images.jpg.image_url}
+                          alt={anime.title}
+                          sx={{ width: "100%", height: "100%" }}
+                        />
+                        <ImageListItemBar title={anime.title} />
+                      </ImageListItem>
+                      {/* <div className='featured-anime-text'>{anime.title}</div> */}
+                    </Link>
+                  </ImageList>
+                </div>
+                // </Grid>
+              );
+            }
+          )}
         </Carousel>
       </Box>
 
@@ -114,33 +117,36 @@ const MainpageContents = (info: MainpageProps) => {
       </div>
       <Box sx={{ paddingBottom: "3%" }} data-testid='summer-anime-carousel'>
         <Carousel breakPoints={breakPoints}>
-          {info.upcomingAnimeSeason.map((anime, aniKey: React.Key) => {
-            return (
-              // <Grid item className='individual-featured-anime-container'>
-              <div key={aniKey} style={{ width: "95%" }}>
-                <ImageList cols={1} rowHeight={500}>
-                  <Link
-                    href={{
-                      pathname: "/anime-info",
-                      query: { id: anime.mal_id },
-                    }}
-                  >
-                    <ImageListItem key={anime.id} cols={1} rows={1}>
-                      <img
-                        className='featured-anime-image'
-                        src={anime.images.jpg.image_url}
-                        alt={anime.title}
-                        sx={{ width: "100%", height: "100%" }}
-                      />
-                      <ImageListItemBar title={anime.title} />
-                    </ImageListItem>
-                    {/* <div className='featured-anime-text'>{anime.title}</div> */}
-                  </Link>
-                </ImageList>
-              </div>
-              // </Grid>
-            );
-          })}
+          {info.upcomingAnimeSeason.map(
+            (anime: AnimeObject, aniKey: React.Key) => {
+              return (
+                // <Grid item className='individual-featured-anime-container'>
+                <div key={aniKey} style={{ width: "95%" }}>
+                  <ImageList cols={1} rowHeight={500}>
+                    <Link
+                      href={{
+                        pathname: "/anime-info",
+                        query: { id: anime.mal_id },
+                      }}
+                    >
+                      <ImageListItem key={anime.mal_id} cols={1} rows={1}>
+                        <Box
+                          component='img'
+                          className='featured-anime-image'
+                          src={anime.images.jpg.image_url}
+                          alt={anime.title}
+                          sx={{ width: "100%", height: "100%" }}
+                        />
+                        <ImageListItemBar title={anime.title} />
+                      </ImageListItem>
+                      {/* <div className='featured-anime-text'>{anime.title}</div> */}
+                    </Link>
+                  </ImageList>
+                </div>
+                // </Grid>
+              );
+            }
+          )}
         </Carousel>
       </Box>
 
