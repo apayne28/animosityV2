@@ -3,8 +3,29 @@ import React from "react";
 import styles from "../anime-info/styles.module.css";
 import MangaInfoSideContent from "./MangaInfoSideContent";
 import MangaInfoMainContent from "./MangaInfoMainContent";
+import { Metadata, ResolvingMetadata } from "next";
 
 export const dynamic = "force-dynamic";
+
+type Props = {
+  params: { id: string };
+  searchParams: { [key: string]: string | string[] | undefined };
+};
+
+export async function generateMetadata(
+  { params, searchParams }: Props,
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+  // read route params
+  const title = searchParams?.title ?? "AnimosityV2";
+  console.log("title", title);
+
+  // optionally access and extend (rather than replace) parent metadata
+
+  return {
+    title: title,
+  };
+}
 
 async function getManga(mangaId: string | string[] | null) {
   try {
@@ -41,11 +62,7 @@ async function getRecommendedManga(mangaId: string | string[] | null) {
   }
 }
 
-const page = async ({
-  searchParams,
-}: {
-  searchParams: { [key: string]: string | string[] | undefined };
-}) => {
+const page = async ({ params, searchParams }: Props) => {
   let id = searchParams?.id ?? "";
 
   const mangaData = getManga(id);

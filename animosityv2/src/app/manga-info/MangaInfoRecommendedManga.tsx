@@ -38,7 +38,7 @@ const MangaInfoRecommendedManga = (info: MangaInfoMainConfigProps) => {
                   <Link
                     href={{
                       pathname: "/manga-info",
-                      query: { id: recManga.mal_id },
+                      query: { id: recManga.mal_id, title: recManga.title },
                     }}
                   >
                     <Image

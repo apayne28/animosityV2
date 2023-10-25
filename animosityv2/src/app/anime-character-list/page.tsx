@@ -2,11 +2,31 @@ import React, { useState } from "react";
 
 import styles from "../anime-info/styles.module.css";
 
-import { Metadata } from "next";
+import { Metadata, ResolvingMetadata } from "next";
 import AnimeInfoSideContent from "../anime-info/AnimeInfoSideContent";
 import AnimeCharacterListPage from "./AnimeCharacterListPage";
 
 export const dynamic = "force-dynamic";
+
+type Props = {
+  params: { id: string };
+  searchParams: { [key: string]: string | string[] | undefined };
+};
+
+export async function generateMetadata(
+  { params, searchParams }: Props,
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+  // read route params
+  const title = searchParams?.title ?? "AnimosityV2";
+  console.log("title", title);
+
+  // optionally access and extend (rather than replace) parent metadata
+
+  return {
+    title: title,
+  };
+}
 
 async function getAnime(animeId: string | string[] | null) {
   try {
@@ -43,11 +63,7 @@ async function getRecommendedAnime(animeId: string | string[] | null) {
   }
 }
 
-const page = async ({
-  searchParams,
-}: {
-  searchParams: { [key: string]: string | string[] | undefined };
-}) => {
+const page = async ({ params, searchParams }: Props) => {
   let id = searchParams?.id ?? "";
 
   const animeData = getAnime(id);

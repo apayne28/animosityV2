@@ -56,7 +56,10 @@ const AnimeInfoMainContent = (info: AnimeInfoMainConfigProps) => {
           <Link
             href={{
               pathname: "anime-character-list",
-              query: { id: animeData.mal_id },
+              query: {
+                id: animeData.mal_id,
+                title: `${animeData.title} Characters`,
+              },
             }}
           >
             View More

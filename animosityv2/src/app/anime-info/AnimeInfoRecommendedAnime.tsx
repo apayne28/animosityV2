@@ -38,7 +38,7 @@ const AnimeInfoRecommendedAnime = (info: AnimeInfoMainConfigProps) => {
                   <Link
                     href={{
                       pathname: "/anime-info",
-                      query: { id: recAnime.mal_id },
+                      query: { id: recAnime.mal_id, title: recAnime.title },
                     }}
                   >
                     <Image

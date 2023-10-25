@@ -23,7 +23,7 @@ const AnimeInfoRelatedAnime = (info: any) => {
                 href={{
                   pathname:
                     single.type === "anime" ? "/anime-info" : "/manga-info",
-                  query: { id: single.mal_id },
+                  query: { id: single.mal_id, title: single.name },
                 }}
               >
                 <Typography className='anime-info-related-anime-item'>{`${relatedAnimeType}: ${single.name}`}</Typography>

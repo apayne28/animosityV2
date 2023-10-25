@@ -20,7 +20,12 @@ const MainpageCarousel = () => {
     <div>
       <Carousel>
         <Carousel.Item>
-          <Link href={{ pathname: "/anime-info", query: { id: 5114 } }}>
+          <Link
+            href={{
+              pathname: "/anime-info",
+              query: { id: 5114, title: "Full Metal Alchemist: Brotherhood" },
+            }}
+          >
             <ImageList cols={1} rowHeight={1200}>
               <ImageListItem>
                 <Image
@@ -50,7 +55,12 @@ const MainpageCarousel = () => {
           </Link>
         </Carousel.Item>
         <Carousel.Item>
-          <Link href={{ pathname: "/anime-info", query: { id: 11061 } }}>
+          <Link
+            href={{
+              pathname: "/anime-info",
+              query: { id: 11061, title: "Hunter X Hunter (2011)" },
+            }}
+          >
             <ImageList cols={1} rowHeight={1200}>
               <ImageListItem>
                 <Image src={hxh} alt='Hunter X Hunter (2011)' fill />
@@ -73,7 +83,12 @@ const MainpageCarousel = () => {
           </Link>
         </Carousel.Item>
         <Carousel.Item>
-          <Link href={{ pathname: "/anime-info", query: { id: 9253 } }}>
+          <Link
+            href={{
+              pathname: "/anime-info",
+              query: { id: 9253, title: "Steins;Gate" },
+            }}
+          >
             <ImageList cols={1} rowHeight={1200}>
               <ImageListItem>
                 <Image src={sg} alt='Steins;Gate' fill />
@@ -95,7 +110,12 @@ const MainpageCarousel = () => {
         </Carousel.Item>
 
         <Carousel.Item>
-          <Link href={{ pathname: "/anime-info", query: { id: 21 } }}>
+          <Link
+            href={{
+              pathname: "/anime-info",
+              query: { id: 21, title: "One Piece" },
+            }}
+          >
             <ImageList cols={1} rowHeight={1200}>
               <ImageListItem>
                 <Image src={op} alt='One Piece' fill />
@@ -117,7 +137,12 @@ const MainpageCarousel = () => {
         </Carousel.Item>
 
         <Carousel.Item>
-          <Link href={{ pathname: "/anime-info", query: { id: 1535 } }}>
+          <Link
+            href={{
+              pathname: "/anime-info",
+              query: { id: 1535, title: "Death Note" },
+            }}
+          >
             <ImageList cols={1} rowHeight={1200}>
               <ImageListItem>
                 <Image src={deathnote4} alt='Death Note' fill />
@@ -138,7 +163,12 @@ const MainpageCarousel = () => {
           </Link>
         </Carousel.Item>
         <Carousel.Item>
-          <Link href={{ pathname: "/manga-info", query: { id: 2 } }}>
+          <Link
+            href={{
+              pathname: "/manga-info",
+              query: { id: 2, title: "Berserk" },
+            }}
+          >
             <ImageList cols={1} rowHeight={1200}>
               <ImageListItem>
                 <Image src={berserk3} alt='Berserk' fill />
@@ -161,7 +191,12 @@ const MainpageCarousel = () => {
         </Carousel.Item>
 
         <Carousel.Item>
-          <Link href={{ pathname: "/manga-info", query: { id: 23390 } }}>
+          <Link
+            href={{
+              pathname: "/manga-info",
+              query: { id: 23390, title: "Shingeki no Kyojin" },
+            }}
+          >
             <ImageList cols={1} rowHeight={1200}>
               <ImageListItem>
                 <Image src={snk} alt='Shingeki no Kyojin' fill />
@@ -185,7 +220,12 @@ const MainpageCarousel = () => {
           </Link>
         </Carousel.Item>
         <Carousel.Item>
-          <Link href={{ pathname: "/manga-info", query: { id: 116778 } }}>
+          <Link
+            href={{
+              pathname: "/manga-info",
+              query: { id: 116778, title: "Chainsaw Man" },
+            }}
+          >
             <ImageList cols={1} rowHeight={1200}>
               <ImageListItem>
                 <Image src={cm} alt='Chainsaw Man' fill />
@@ -208,7 +248,12 @@ const MainpageCarousel = () => {
         </Carousel.Item>
 
         <Carousel.Item>
-          <Link href={{ pathname: "/manga-info", query: { id: 11 } }}>
+          <Link
+            href={{
+              pathname: "/manga-info",
+              query: { id: 11, title: "Naruto" },
+            }}
+          >
             <ImageList cols={1} rowHeight={1200}>
               <ImageListItem>
                 <Image src={naruto} alt='Naruto' fill />
@@ -231,7 +276,12 @@ const MainpageCarousel = () => {
         </Carousel.Item>
 
         <Carousel.Item>
-          <Link href={{ pathname: "/manga-info", query: { id: 4632 } }}>
+          <Link
+            href={{
+              pathname: "/manga-info",
+              query: { id: 4632, title: "Oyasumi Punpun" },
+            }}
+          >
             <ImageList cols={1} rowHeight={1200}>
               <ImageListItem>
                 <Image src={opp} alt='Oyasumi Punpun' fill />
