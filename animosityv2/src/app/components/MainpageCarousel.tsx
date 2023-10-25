@@ -138,109 +138,121 @@ const MainpageCarousel = () => {
           </Link>
         </Carousel.Item>
         <Carousel.Item>
-          <ImageList cols={1} rowHeight={1200}>
-            <ImageListItem>
-              <Image src={berserk3} alt='Berserk' fill />
-              <Carousel.Caption>
-                {/* <Typography sx={{ fontSize: 80 }}>Berserk</Typography> */}
-                <Box
-                  sx={{
-                    backgroundColor: "#3B2C35",
-                    marginLeft: "8%",
-                    marginRight: "8%",
-                    opacity: 0.8,
-                  }}
-                >
-                  <Typography sx={{ fontSize: 100 }}>Berserk</Typography>
-                </Box>
-              </Carousel.Caption>
-            </ImageListItem>
-          </ImageList>
+          <Link href={{ pathname: "/manga-info", query: { id: 2 } }}>
+            <ImageList cols={1} rowHeight={1200}>
+              <ImageListItem>
+                <Image src={berserk3} alt='Berserk' fill />
+                <Carousel.Caption>
+                  {/* <Typography sx={{ fontSize: 80 }}>Berserk</Typography> */}
+                  <Box
+                    sx={{
+                      backgroundColor: "#3B2C35",
+                      marginLeft: "8%",
+                      marginRight: "8%",
+                      opacity: 0.8,
+                    }}
+                  >
+                    <Typography sx={{ fontSize: 100 }}>Berserk</Typography>
+                  </Box>
+                </Carousel.Caption>
+              </ImageListItem>
+            </ImageList>
+          </Link>
         </Carousel.Item>
 
         <Carousel.Item>
-          <ImageList cols={1} rowHeight={1200}>
-            <ImageListItem>
-              <Image src={snk} alt='Shingeki no Kyojin' fill />
-              <Carousel.Caption>
-                {/* <Typography sx={{ fontSize: 80 }}>Berserk</Typography> */}
-                <Box
-                  sx={{
-                    backgroundColor: "#3B2C35",
-                    marginLeft: "3.3%",
-                    marginRight: "3.3%",
-                    opacity: 0.8,
-                  }}
-                >
-                  <Typography sx={{ fontSize: 100 }}>
-                    Shingeki no Kyojin
-                  </Typography>
-                </Box>
-              </Carousel.Caption>
-            </ImageListItem>
-          </ImageList>
+          <Link href={{ pathname: "/manga-info", query: { id: 23390 } }}>
+            <ImageList cols={1} rowHeight={1200}>
+              <ImageListItem>
+                <Image src={snk} alt='Shingeki no Kyojin' fill />
+                <Carousel.Caption>
+                  {/* <Typography sx={{ fontSize: 80 }}>Berserk</Typography> */}
+                  <Box
+                    sx={{
+                      backgroundColor: "#3B2C35",
+                      marginLeft: "3.3%",
+                      marginRight: "3.3%",
+                      opacity: 0.8,
+                    }}
+                  >
+                    <Typography sx={{ fontSize: 100 }}>
+                      Shingeki no Kyojin
+                    </Typography>
+                  </Box>
+                </Carousel.Caption>
+              </ImageListItem>
+            </ImageList>
+          </Link>
         </Carousel.Item>
         <Carousel.Item>
-          <ImageList cols={1} rowHeight={1200}>
-            <ImageListItem>
-              <Image src={cm} alt='Chainsaw Man' fill />
-              <Carousel.Caption>
-                {/* <Typography sx={{ fontSize: 80 }}>Berserk</Typography> */}
-                <Box
-                  sx={{
-                    backgroundColor: "#3B2C35",
-                    // marginLeft: "3.3%",
-                    // marginRight: "3.3%",
-                    opacity: 0.8,
-                  }}
-                >
-                  <Typography sx={{ fontSize: 100 }}>Chainsaw Man</Typography>
-                </Box>
-              </Carousel.Caption>
-            </ImageListItem>
-          </ImageList>
-        </Carousel.Item>
-
-        <Carousel.Item>
-          <ImageList cols={1} rowHeight={1200}>
-            <ImageListItem>
-              <Image src={naruto} alt='Naruto' fill />
-              <Carousel.Caption>
-                {/* <Typography sx={{ fontSize: 80 }}>Berserk</Typography> */}
-                <Box
-                  sx={{
-                    backgroundColor: "#3B2C35",
-                    // marginLeft: "3.3%",
-                    // marginRight: "3.3%",
-                    opacity: 0.8,
-                  }}
-                >
-                  <Typography sx={{ fontSize: 100 }}>Naruto</Typography>
-                </Box>
-              </Carousel.Caption>
-            </ImageListItem>
-          </ImageList>
+          <Link href={{ pathname: "/manga-info", query: { id: 116778 } }}>
+            <ImageList cols={1} rowHeight={1200}>
+              <ImageListItem>
+                <Image src={cm} alt='Chainsaw Man' fill />
+                <Carousel.Caption>
+                  {/* <Typography sx={{ fontSize: 80 }}>Berserk</Typography> */}
+                  <Box
+                    sx={{
+                      backgroundColor: "#3B2C35",
+                      // marginLeft: "3.3%",
+                      // marginRight: "3.3%",
+                      opacity: 0.8,
+                    }}
+                  >
+                    <Typography sx={{ fontSize: 100 }}>Chainsaw Man</Typography>
+                  </Box>
+                </Carousel.Caption>
+              </ImageListItem>
+            </ImageList>
+          </Link>
         </Carousel.Item>
 
         <Carousel.Item>
-          <ImageList cols={1} rowHeight={1200}>
-            <ImageListItem>
-              <Image src={opp} alt='Oyasumi Punpun' fill />
-              <Carousel.Caption>
-                {/* <Typography sx={{ fontSize: 80 }}>Berserk</Typography> */}
-                <Box
-                  sx={{
-                    backgroundColor: "#3B2C35",
-                    // marginLeft: "12.4%",
-                    // marginRight: "12.4%",
-                    opacity: 0.8,
-                  }}
-                >
-                  <Typography sx={{ fontSize: 100 }}>Oyasumi Punpun</Typography>
-                </Box>
-              </Carousel.Caption>
-            </ImageListItem>
-          </ImageList>
+          <Link href={{ pathname: "/manga-info", query: { id: 11 } }}>
+            <ImageList cols={1} rowHeight={1200}>
+              <ImageListItem>
+                <Image src={naruto} alt='Naruto' fill />
+                <Carousel.Caption>
+                  {/* <Typography sx={{ fontSize: 80 }}>Berserk</Typography> */}
+                  <Box
+                    sx={{
+                      backgroundColor: "#3B2C35",
+                      // marginLeft: "3.3%",
+                      // marginRight: "3.3%",
+                      opacity: 0.8,
+                    }}
+                  >
+                    <Typography sx={{ fontSize: 100 }}>Naruto</Typography>
+                  </Box>
+                </Carousel.Caption>
+              </ImageListItem>
+            </ImageList>
+          </Link>
+        </Carousel.Item>
+
+        <Carousel.Item>
+          <Link href={{ pathname: "/manga-info", query: { id: 4632 } }}>
+            <ImageList cols={1} rowHeight={1200}>
+              <ImageListItem>
+                <Image src={opp} alt='Oyasumi Punpun' fill />
+                <Carousel.Caption>
+                  {/* <Typography sx={{ fontSize: 80 }}>Berserk</Typography> */}
+                  <Box
+                    sx={{
+                      backgroundColor: "#3B2C35",
+                      // marginLeft: "12.4%",
+                      // marginRight: "12.4%",
+                      opacity: 0.8,
+                    }}
+                  >
+                    <Typography sx={{ fontSize: 100 }}>
+                      Oyasumi Punpun
+                    </Typography>
+                  </Box>
+                </Carousel.Caption>
+              </ImageListItem>
+            </ImageList>
+          </Link>
         </Carousel.Item>
       </Carousel>
     </div>
