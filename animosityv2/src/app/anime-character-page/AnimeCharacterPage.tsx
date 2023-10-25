@@ -228,13 +228,17 @@ const AnimeCharacterPage = (info: AnimeCharacterProps) => {
                           {animeCharacter.voices.map((actor) => {
                             return (
                               <div>
-                                {/* <Link
+                                <Link
                                   data-testid={`anime-character-${animeCharacter.name}-voice-actor-${actor.person.name}`}
-                                  to='/character-voice-actor-page'
-                                  state={{
-                                    characterValue: actor.person.mal_id,
-                                  }}
-                                > */}
+                                 
+                                         href={{
+                      pathname: "/voice-actor-page",
+                      query: {
+                        id: actor.person.mal_id,
+                        title: actor.person.name,
+                      },
+                    }}
+                                >
                                 <ImageList cols={1} rowHeight={400}>
                                   <ImageListItem>
                                     <Box
@@ -259,7 +263,7 @@ const AnimeCharacterPage = (info: AnimeCharacterProps) => {
                                     />
                                   </ImageListItem>
                                 </ImageList>
-                                {/* </Link> */}
+                                </Link>
                               </div>
                             );
                           })}
