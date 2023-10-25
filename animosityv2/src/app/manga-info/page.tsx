@@ -2,6 +2,7 @@ import React from "react";
 
 import styles from "../anime-info/styles.module.css";
 import MangaInfoSideContent from "./MangaInfoSideContent";
+import MangaInfoMainContent from "./MangaInfoMainContent";
 
 export const dynamic = "force-dynamic";
 
@@ -60,6 +61,12 @@ const page = async ({
   return (
     <div className={styles.anime_info_content_container}>
       <MangaInfoSideContent mangaData={manga} />
+
+      <MangaInfoMainContent
+        mangaData={manga}
+        mangaCharacterListData={characters}
+        recommendedMangaData={recommendations}
+      />
     </div>
   );
 };

@@ -1,3 +1,6 @@
+export type AnimeEntry = {
+  entry: AnimeObject;
+};
 export type AnimeObject = {
   mal_id: number;
   url: string;
@@ -210,6 +213,11 @@ export type AnimeRelation = {
   url: string;
 };
 
+// MANGA TYPES
+
+export type MangaEntry = {
+  entry: MangaObject;
+};
 export type MangaObject = {
   mal_id: number;
   url: string;

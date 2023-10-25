@@ -5,13 +5,13 @@ import React from "react";
 import Carousel from "@itseasy21/react-elastic-carousel";
 import Link from "next/link";
 import Image from "next/image";
-import { AnimeEntry } from "../../AnimosityTypes";
+import { MangaEntry } from "../../AnimosityTypes";
 
-interface AnimeInfoMainConfigProps {
+interface MangaInfoMainConfigProps {
   recommendations: any;
 }
-const AnimeInfoRecommendedAnime = (info: AnimeInfoMainConfigProps) => {
-  let animeRecommendationsList = info.recommendations;
+const MangaInfoRecommendedManga = (info: MangaInfoMainConfigProps) => {
+  let mangaRecommendationsList = info.recommendations;
   const breakPoints = [
     { width: 1, itemsToShow: 1 },
 
@@ -28,8 +28,8 @@ const AnimeInfoRecommendedAnime = (info: AnimeInfoMainConfigProps) => {
   return (
     <div>
       <Carousel breakPoints={breakPoints}>
-        {animeRecommendationsList.map((info: AnimeEntry) => {
-          let recAnime = info.entry;
+        {mangaRecommendationsList.map((info: MangaEntry) => {
+          let recManga = info.entry;
 
           return (
             <div>
@@ -37,19 +37,19 @@ const AnimeInfoRecommendedAnime = (info: AnimeInfoMainConfigProps) => {
                 <ImageListItem>
                   <Link
                     href={{
-                      pathname: "/anime-info",
-                      query: { id: recAnime.mal_id },
+                      pathname: "/manga-info",
+                      query: { id: recManga.mal_id },
                     }}
                   >
                     <Image
-                      src={recAnime.images.jpg.image_url}
-                      alt={recAnime.title}
+                      src={recManga.images.jpg.image_url}
+                      alt={recManga.title}
                       height={400}
                       width={300}
                     />
 
                     <ImageListItemBar
-                      title={recAnime.title}
+                      title={recManga.title}
                       sx={{ borderRadius: 1 }}
                     />
                   </Link>
@@ -65,4 +65,4 @@ const AnimeInfoRecommendedAnime = (info: AnimeInfoMainConfigProps) => {
   );
 };
 
-export default AnimeInfoRecommendedAnime;
+export default MangaInfoRecommendedManga;

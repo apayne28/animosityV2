@@ -2,6 +2,7 @@ import React from "react";
 import AnimeInfoSideContent from "./AnimeInfoSideContent";
 import AnimeInfoMainContent from "./AnimeInfoMainContent";
 import styles from "./styles.module.css";
+import { Metadata } from "next";
 
 export const dynamic = "force-dynamic";
 
