@@ -38,3 +38,32 @@
 
   font-size: 26px;
 }
+
+.anime-character-list-contents {
+  margin-top: 1%;
+  margin-left: 1%;
+  width: 75%;
+  /* margin: auto;  */
+  /* height: 100%; */
+}
+
+.anime-character-main-info-content {
+  padding-left: 1%;
+  padding-right: 1%;
+}
+
+.anime-character-list-contents img {
+  transition: 1s ease;
+  -webkit-filter: brightness(100%);
+  background-color: black;
+}
+
+.anime-character-list-contents img:hover {
+  -webkit-transform: scale(1.1);
+  -ms-transform: scale(1.1);
+  transform: scale(1.1);
+  transition: 1s ease;
+  -webkit-filter: brightness(50%);
+  /* opacity: 0.3; */
+  /* border-radius: 50px; */
+}

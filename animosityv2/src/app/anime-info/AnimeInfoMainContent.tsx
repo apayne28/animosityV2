@@ -6,6 +6,7 @@ import AnimeInfoRecommendedAnime from "./AnimeInfoRecommendedAnime";
 import AnimeInfoRelatedAnime from "./AnimeInfoRelatedAnime";
 import styles from "./styles.module.css";
 import ReactPlayer from "react-player";
+import Link from "next/link";
 
 interface AnimeInfoMainConfigProps {
   animeData: any;
@@ -50,7 +51,18 @@ const AnimeInfoMainContent = (info: AnimeInfoMainConfigProps) => {
         <AnimeInfoRelatedAnime relatedAnime={relatedAnime} />
       </div>
       <div>
-        <h3>Characters</h3>
+        <h3>
+          Characters{" "}
+          <Link
+            href={{
+              pathname: "anime-character-list",
+              query: { id: animeData.mal_id },
+            }}
+          >
+            View More
+          </Link>
+        </h3>
+
         <AnimeInfoCharacters characters={characterData} />
       </div>
       {recommendedAnimeData.length > 0 && (
