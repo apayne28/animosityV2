@@ -4,7 +4,7 @@ import styles from "../anime-info/styles.module.css";
 
 import { Metadata, ResolvingMetadata } from "next";
 import AnimeInfoSideContent from "../anime-info/AnimeInfoSideContent";
-import AnimeCharacterListPage from "./AnimeCharacterListPage";
+import AnimeRecommendationListPage from "./AnimeRecommendationListPage";
 
 export const dynamic = "force-dynamic";
 
@@ -18,7 +18,8 @@ export async function generateMetadata(
   parent: ResolvingMetadata
 ): Promise<Metadata> {
   // read route params
-  const title = searchParams?.title ?? "AnimosityV2";
+  const title =
+    `Recommendations Based Off ${searchParams?.title}` ?? "AnimosityV2";
   console.log("title", title);
 
   // optionally access and extend (rather than replace) parent metadata
@@ -40,17 +41,17 @@ async function getAnime(animeId: string | string[] | null) {
   }
 }
 
-async function getAnimeCharacters(animeId: string | string[] | null) {
-  try {
-    const characterTemp = await fetch(
-      `https://api.jikan.moe/v4/anime/${animeId}/characters`
-    ).then((res) => res.json());
+// async function getAnimeCharacters(animeId: string | string[] | null) {
+//   try {
+//     const characterTemp = await fetch(
+//       `https://api.jikan.moe/v4/anime/${animeId}/characters`
+//     ).then((res) => res.json());
 
-    return characterTemp.data;
-  } catch {
-    console.log("Anime Character List not found");
-  }
-}
+//     return characterTemp.data;
+//   } catch {
+//     console.log("Anime Character List not found");
+//   }
+// }
 
 async function getRecommendedAnime(animeId: string | string[] | null) {
   try {
@@ -67,12 +68,12 @@ const page = async ({ params, searchParams }: Props) => {
   let id = searchParams?.id ?? "";
 
   const animeData = getAnime(id);
-  const characterData = getAnimeCharacters(id);
+  //   const characterData = getAnimeCharacters(id);
   const recommendedAnimeData = getRecommendedAnime(id);
 
-  const [anime, characters, recommendations] = await Promise.all([
+  const [anime, recommendations] = await Promise.all([
     animeData,
-    characterData,
+
     recommendedAnimeData,
   ]);
   return (
@@ -84,9 +85,9 @@ const page = async ({ params, searchParams }: Props) => {
         animeCharacterListData={characters}
         recommendedAnimeData={recommendations}
       /> */}
-      <AnimeCharacterListPage
+      <AnimeRecommendationListPage
         animeData={anime}
-        characterList={characters}
+        // charactersList={characters}
         recommendedAnime={recommendations}
       />
     </div>

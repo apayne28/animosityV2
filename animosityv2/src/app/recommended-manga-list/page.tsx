@@ -4,7 +4,7 @@ import styles from "../anime-info/styles.module.css";
 
 import { Metadata, ResolvingMetadata } from "next";
 import MangaInfoSideContent from "../manga-info/MangaInfoSideContent";
-import MangaCharacterListPage from "./MangaCharacterListPage";
+import MangaRecommendationListPage from "./MangaRecommendationListPage";
 
 export const dynamic = "force-dynamic";
 
@@ -18,7 +18,8 @@ export async function generateMetadata(
   parent: ResolvingMetadata
 ): Promise<Metadata> {
   // read route params
-  const title = searchParams?.title ?? "AnimosityV2";
+  const title =
+    `Recommendations Based Off ${searchParams?.title}` ?? "AnimosityV2";
   console.log("title", title);
 
   // optionally access and extend (rather than replace) parent metadata
@@ -67,15 +68,14 @@ const page = async ({ params, searchParams }: Props) => {
   let id = searchParams?.id ?? "";
 
   const mangaData = getManga(id);
-  const characterData = getMangaCharacters(id);
-  const recommendedAnimeData = getRecommendedManga(id);
+  //   const characterData = getAnimeCharacters(id);
+  const recommendedMangaData = getRecommendedManga(id);
 
-  const [manga, characters, recommendations] = await Promise.all([
+  const [manga, recommendations] = await Promise.all([
     mangaData,
-    characterData,
-    recommendedAnimeData,
-  ]);
 
+    recommendedMangaData,
+  ]);
   return (
     <div className={styles.anime_info_content_container}>
       <MangaInfoSideContent mangaData={manga} />
@@ -85,9 +85,9 @@ const page = async ({ params, searchParams }: Props) => {
         animeCharacterListData={characters}
         recommendedAnimeData={recommendations}
       /> */}
-      <MangaCharacterListPage
+      <MangaRecommendationListPage
         mangaData={manga}
-        characterList={characters}
+        // charactersList={characters}
         recommendedManga={recommendations}
       />
     </div>

@@ -9,9 +9,10 @@ import {
 import React, { useEffect, useState } from "react";
 import { AnimeCharacters } from "../../AnimosityTypes";
 import styles from "../anime-info/styles.module.css";
+import AnimeInfoDetails from "../anime-info/AnimeInfoDetails";
 
 interface AnimeCharacterListProps {
-  charactersList: any;
+  characterList: any;
   animeData: any;
   recommendedAnime: any;
 }
@@ -70,9 +71,14 @@ const AnimeCharacterListPage = (info: AnimeCharacterListProps) => {
   return (
     <Box sx={{ display: "flex", marginTop: "2%" }}>
       <div className={styles.anime_character_list_contents}>
+        <AnimeInfoDetails
+          animeData={info.animeData}
+          animeCharacterListData={info.characterList}
+          recommendedAnimeData={info.recommendedAnime}
+        />
         <Grid container>
           <ImageList cols={columnSize} rowHeight={rowHeight}>
-            {info.charactersList.map((character: AnimeCharacters) => {
+            {info.characterList.map((character: AnimeCharacters) => {
               let characterEntry = character.character;
 
               return (

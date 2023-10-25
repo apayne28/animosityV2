@@ -8,12 +8,15 @@ import {
 } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { AnimeCharacters } from "../../AnimosityTypes";
+import Link from "next/link";
+
 import styles from "../anime-info/styles.module.css";
+import MangaInfoDetails from "../manga-info/MangaInfoDetails";
 
 interface AnimeCharacterListProps {
-  charactersList: any;
+  characterList: any;
   mangaData: any;
-  recommendedAnime: any;
+  recommendedManga: any;
 }
 
 const AnimeCharacterListPage = (info: AnimeCharacterListProps) => {
@@ -70,9 +73,14 @@ const AnimeCharacterListPage = (info: AnimeCharacterListProps) => {
   return (
     <Box sx={{ display: "flex", marginTop: "2%" }}>
       <div className={styles.anime_character_list_contents}>
+        <MangaInfoDetails
+          mangaData={info.mangaData}
+          mangaCharacterListData={info.characterList}
+          recommendedMangaData={info.recommendedManga}
+        />
         <Grid container>
           <ImageList cols={columnSize} rowHeight={rowHeight}>
-            {info.charactersList.map((character: AnimeCharacters) => {
+            {info.characterList.map((character: AnimeCharacters) => {
               let characterEntry = character.character;
 
               return (
@@ -85,24 +93,29 @@ const AnimeCharacterListPage = (info: AnimeCharacterListProps) => {
                     backgroundColor: "white",
                   }}
                 >
-                  {/* <Link
-                    to='/character-profile'
-                    state={{ characterId: characterEntry.mal_id }}
+                  <Link
+                    href={{
+                      pathname: "/anime-character-page",
+                      query: {
+                        id: characterEntry.mal_id,
+                        title: characterEntry.name,
+                      },
+                    }}
                     data-testid={`anime-info-page-character-list-entry-${characterEntry.name}`}
-                  > */}
-                  <ImageListItem>
-                    <Box
-                      component='img'
-                      sx={{ width: "100%", height: "100%" }}
-                      src={characterEntry.images.jpg.image_url}
-                      alt={characterEntry.name}
-                    />
+                  >
+                    <ImageListItem>
+                      <Box
+                        component='img'
+                        sx={{ width: "100%", height: "100%" }}
+                        src={characterEntry.images.jpg.image_url}
+                        alt={characterEntry.name}
+                      />
 
-                    <ImageListItemBar
-                      title={`${characterEntry.name} (${character.role})`}
-                    />
-                  </ImageListItem>
-                  {/* </Link> */}
+                      <ImageListItemBar
+                        title={`${characterEntry.name} (${character.role})`}
+                      />
+                    </ImageListItem>
+                  </Link>
                 </Grid>
               );
             })}

@@ -7,6 +7,7 @@ import MangaInfoRelatedManga from "./MangaInfoRelatedManga";
 import MangaInfoCharacters from "./MangaInfoCharacters";
 import MangaInfoRecommendedManga from "./MangaInfoRecommendedManga";
 import Link from "next/link";
+import MangaInfoDetails from "./MangaInfoDetails";
 
 interface MangaInfoMainConfigProps {
   mangaData: any;
@@ -21,6 +22,11 @@ const MangaInfoMainContent = (info: MangaInfoMainConfigProps) => {
 
   return (
     <div className={styles.anime_info_main_content_container}>
+      <MangaInfoDetails
+        mangaData={mangaData}
+        mangaCharacterListData={characterData}
+        recommendedMangaData={recommendedMangaData}
+      />
       <div>
         <h3>Synopsis</h3>
         <Typography paragraph>{mangaData.synopsis}</Typography>
@@ -55,7 +61,20 @@ const MangaInfoMainContent = (info: MangaInfoMainConfigProps) => {
       </div>
       {recommendedMangaData.length > 0 && (
         <div>
-          <h3>Recommended Anime</h3>
+          <h3>
+            Recommended Anime{" "}
+            <Link
+              href={{
+                pathname: "/recommended-manga-list",
+                query: {
+                  id: mangaData.mal_id,
+                  title: `${mangaData.title}`,
+                },
+              }}
+            >
+              View More
+            </Link>
+          </h3>
           <MangaInfoRecommendedManga recommendations={recommendedMangaData} />
         </div>
       )}

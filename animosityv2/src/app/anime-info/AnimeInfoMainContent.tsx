@@ -7,6 +7,7 @@ import AnimeInfoRelatedAnime from "./AnimeInfoRelatedAnime";
 import styles from "./styles.module.css";
 import ReactPlayer from "react-player";
 import Link from "next/link";
+import AnimeInfoDetails from "./AnimeInfoDetails";
 
 interface AnimeInfoMainConfigProps {
   animeData: any;
@@ -21,6 +22,11 @@ const AnimeInfoMainContent = (info: AnimeInfoMainConfigProps) => {
 
   return (
     <div className={styles.anime_info_main_content_container}>
+      <AnimeInfoDetails
+        animeData={animeData}
+        animeCharacterListData={characterData}
+        recommendedAnimeData={recommendedAnimeData}
+      />
       {animeData.trailer.url && (
         <div>
           {/* <a href={info.trailer.url} target='_blank' rel='noreferrer'>
@@ -70,7 +76,20 @@ const AnimeInfoMainContent = (info: AnimeInfoMainConfigProps) => {
       </div>
       {recommendedAnimeData.length > 0 && (
         <div>
-          <h3>Recommended Anime</h3>
+          <h3>
+            Recommended Anime{" "}
+            <Link
+              href={{
+                pathname: "/recommended-anime-list",
+                query: {
+                  id: animeData.mal_id,
+                  title: `${animeData.title}`,
+                },
+              }}
+            >
+              View More
+            </Link>
+          </h3>
           <AnimeInfoRecommendedAnime recommendations={recommendedAnimeData} />
         </div>
       )}
