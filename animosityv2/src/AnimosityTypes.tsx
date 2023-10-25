@@ -209,3 +209,130 @@ export type AnimeRelation = {
   name: string;
   url: string;
 };
+
+export type MangaObject = {
+  mal_id: number;
+  url: string;
+  images: {
+    jpg: {
+      image_url: string;
+      small_image_url: string;
+      large_image_url: string;
+    };
+    webp: {
+      image_url: string;
+      small_image_url: string;
+      large_image_url: string;
+    };
+  };
+  approved: boolean;
+  titles: MangaTitles[];
+  title: string;
+  title_english: string;
+  title_japanese: string;
+  title_synonyms: string[];
+  type: string;
+  chapters: number | null;
+  volumes: number | null;
+  status: string;
+  publishing: boolean;
+  published: {
+    from: string;
+    to: string;
+    prop: {
+      from: {
+        day: number;
+        month: number;
+        year: number;
+      };
+      to: {
+        day: number;
+        month: number;
+        year: number;
+      };
+    };
+    string: string;
+  };
+  score: number;
+  scored: number;
+  scored_by: number;
+  rank: number;
+  popularity: number;
+  members: number;
+  favorites: number;
+  synopsis: string;
+  background: string;
+  authors: MangaAuthor[];
+  serializations: MangaSerialization[];
+  genres: MangaGenres[];
+  explicit_genres: [
+    {
+      mal_id: number;
+      type: string;
+      name: string;
+      url: string;
+    }
+  ];
+  themes: MangaThemes[];
+  demographics: MangaDemographics[];
+  relations: MangaRelations[];
+
+  external: MangaExternal[];
+};
+
+export type MangaTitles = {
+  type: string;
+  title: string;
+};
+
+export type MangaAuthor = {
+  mal_id: number;
+  type: string;
+  name: string;
+  url: string;
+};
+
+export type MangaSerialization = {
+  mal_id: number;
+  type: string;
+  name: string;
+  url: string;
+};
+
+export type MangaGenres = {
+  mal_id: number;
+  type: string;
+  name: string;
+  url: string;
+};
+
+export type MangaThemes = {
+  mal_id: number;
+  type: string;
+  name: string;
+  url: string;
+};
+
+export type MangaDemographics = {
+  mal_id: number;
+  type: string;
+  name: string;
+  url: string;
+};
+
+export type MangaRelations = {
+  relation: string;
+  entry: AnimeRelation[];
+};
+
+export type MangaRelation = {
+  mal_id: number;
+  type: string;
+  name: string;
+  url: string;
+};
+
+export type MangaExternal = {
+  name: string;
+  url: string;
+};

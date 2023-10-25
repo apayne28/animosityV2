@@ -18,16 +18,17 @@ const AnimeInfoRelatedAnime = (info: any) => {
 
         return relatedAnime.map((single: AnimeRelation) => {
           return (
-            <div>
+            <>
               <Link
                 href={{
-                  pathname: "/anime-info",
+                  pathname:
+                    single.type === "anime" ? "/anime-info" : "/manga-info",
                   query: { id: single.mal_id },
                 }}
               >
                 <Typography className='anime-info-related-anime-item'>{`${relatedAnimeType}: ${single.name}`}</Typography>
               </Link>
-            </div>
+            </>
           );
         });
       })}
