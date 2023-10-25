@@ -36,17 +36,27 @@ const AnimeInfoCharacters = (info: AnimeInfoCharactersConfigProps) => {
             <div>
               <ImageList cols={1} rowHeight={400}>
                 <ImageListItem>
-                  <Image
-                    src={characterEntry.images.jpg.image_url}
-                    alt={characterEntry.name}
-                    // sx={{ borderRadius: 1 }}
-                    height={400}
-                    width={300}
-                  />
-                  <ImageListItemBar
-                    title={characterEntry.name}
-                    sx={{ borderRadius: 1 }}
-                  />
+                  <Link
+                    href={{
+                      pathname: "/anime-character-page",
+                      query: {
+                        id: characterEntry.mal_id,
+                        title: characterEntry.name,
+                      },
+                    }}
+                  >
+                    <Image
+                      src={characterEntry.images.jpg.image_url}
+                      alt={characterEntry.name}
+                      // sx={{ borderRadius: 1 }}
+                      height={400}
+                      width={300}
+                    />
+                    <ImageListItemBar
+                      title={characterEntry.name}
+                      sx={{ borderRadius: 1 }}
+                    />
+                  </Link>
                 </ImageListItem>
                 {/* <Typography>{characterEntry.name} </Typography> */}
               </ImageList>

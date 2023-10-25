@@ -184,7 +184,7 @@ export type AnimeCharacters = {
 };
 
 export type AnimeCharacter = {
-  mal_id: string;
+  mal_id: number;
   url: string;
   images: {
     jpg: {
@@ -199,6 +199,88 @@ export type AnimeCharacter = {
     };
   };
   name: string;
+};
+
+export type AnimeCharacterFull = {
+  mal_id: number;
+  url: string;
+  images: {
+    jpg: {
+      image_url: string;
+      small_image_url: string;
+      large_image_url: string;
+    };
+    webp: {
+      image_url: string;
+      small_image_url: string;
+      large_image_url: string;
+    };
+  };
+  name: string;
+  name_kanji: string;
+  nicknames: string[];
+  favorites: number;
+  about: string;
+  anime: [];
+  manga: [];
+  voices: AnimeVoiceActors[];
+};
+
+export type AnimeCharacterAnimeAppearances = {
+  role: string;
+  anime: {
+    mal_id: number;
+    url: string;
+    images: {
+      jpg: {
+        image_url: string;
+        small_image_url: string;
+        large_image_url: string;
+      };
+      webp: {
+        image_url: string;
+        small_image_url: string;
+        large_image_url: string;
+      };
+    };
+    title: string;
+  };
+};
+
+export type AnimeCharacterMangaAppearances = {
+  role: string;
+  manga: {
+    mal_id: number;
+    url: string;
+    images: {
+      jpg: {
+        image_url: string;
+        small_image_url: string;
+        large_image_url: string;
+      };
+      webp: {
+        image_url: string;
+        small_image_url: string;
+        large_image_url: string;
+      };
+    };
+    title: string;
+  };
+};
+
+export type AnimeVoiceActor = {
+  mal_id: number;
+  images: {
+    jpg: {
+      image_url: string;
+    };
+  };
+  name: string;
+};
+
+export type AnimeVoiceActors = {
+  person: AnimeVoiceActor;
+  language: string;
 };
 
 export type AnimeRelations = {
