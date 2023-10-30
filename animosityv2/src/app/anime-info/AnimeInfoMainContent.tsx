@@ -61,7 +61,7 @@ const AnimeInfoMainContent = (info: AnimeInfoMainConfigProps) => {
         </div>
         <div>
           <h3>
-            Characters{" "}
+            Characters
             <Link
               href={{
                 pathname: "/anime-character-list",
