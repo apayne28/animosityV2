@@ -15,6 +15,8 @@ import styles from "../anime-info/styles.module.css";
 
 import Link from "next/link";
 import { Person } from "../../AnimosityTypes";
+import VoiceActorDetails from "./VoiceActorDetails";
+import VoiceActorSideContent from "./VoiceActorSideContent";
 
 interface VoiceActorProps {
   voiceActor: Person;
@@ -34,18 +36,6 @@ const AnimeVoiceActorPage = (info: VoiceActorProps) => {
 
     { width: 3008, itemsToShow: 8, itemsToScroll: 8 },
   ];
-
-  // let filteredVoiceRoles = voiceRoles
-  //   .filter(
-  //     (value, index, self) =>
-  //       index ===
-  //       self.findIndex(
-  //         (t) =>
-  //           t.character.name === value.character.name &&
-  //           t.character.name === value.character.name
-  //       )
-  //   )
-  //   .sort((a, b) => a.role === "main");
 
   let filteredVoiceRoles = voiceRoles
     .filter(
@@ -80,64 +70,7 @@ const AnimeVoiceActorPage = (info: VoiceActorProps) => {
         </div>
       </Box>
       <div className={styles.anime_characters_main}>
-        <div className={styles.anime_character_side_content}>
-          <ImageList cols={1}>
-            <ImageListItem>
-              <Box
-                component='img'
-                src={voiceActor.images.jpg.image_url}
-                alt={voiceActor.name}
-                sx={{ width: "100%", height: "100%", borderRadius: 1 }}
-              />
-              <ImageListItemBar
-                title={<Typography>{voiceActor.name}</Typography>}
-              />
-            </ImageListItem>
-          </ImageList>
-
-          <div className={styles.anime_characters_nickname_container}>
-            {voiceActor.alternate_names.length > 0 ? (
-              <Grid item sx={{ paddingBottom: 5 }}>
-                <Typography
-                  sx={{
-                    backgroundColor: "#59C9A5",
-                    padding: "2%",
-                    borderRadius: "1%",
-                    fontSize: 23,
-                    opacity: "80%",
-                  }}
-                >
-                  Nicknames:
-                </Typography>
-                {voiceActor.alternate_names.map((nicknames) => {
-                  return (
-                    <Typography sx={{ padding: "2%", fontSize: 19 }}>
-                      {nicknames}
-                    </Typography>
-                  );
-                })}
-              </Grid>
-            ) : (
-              ""
-            )}
-          </div>
-          <div className={styles.anime_character_members_number}>
-            <Typography
-              sx={{
-                backgroundColor: "#59C9A5",
-                padding: "2%",
-                borderRadius: "1%",
-                fontSize: 23,
-                opacity: "80%",
-              }}
-            >
-              Member Favorites:
-            </Typography>
-            <Typography
-              sx={{ padding: "2%", fontSize: 25 }}
-            >{`${voiceActor.favorites.toLocaleString("en-US")}`}</Typography>
-          </div>
-        </div>
+        <VoiceActorSideContent voiceActor={voiceActor} />
         <div className={styles.anime_character_main_info_container}>
           <div>
             {/* <VoiceActorDetails
@@ -145,6 +78,7 @@ const AnimeVoiceActorPage = (info: VoiceActorProps) => {
               charList={filteredVoiceRoles}
               animeRecList={filteredAnime}
             /> */}
+            <VoiceActorDetails voiceActor={voiceActor} />
           </div>
           <div className={styles.anime_info_character_info_content}>
             <div className={styles.anime_character_name_header}>
@@ -210,29 +144,30 @@ const AnimeVoiceActorPage = (info: VoiceActorProps) => {
                   }}
                 >
                   <h3>Roles</h3>
-                  {/* <Link
-                    to='/voice-actor-role-list-page'
-                    state={{
-                      roleList: filteredVoiceRoles,
-                      voiceActor: voiceActor.mal_id,
-                      animeList: filteredAnime,
+                  <Link
+                    href={{
+                      pathname: "/voice-actor-role-list",
+                      query: {
+                        id: info.voiceActor.mal_id,
+                        title: `${info.voiceActor.name}'s Roles`,
+                      },
                     }}
                     style={{ textDecoration: "none" }}
-                  > */}
-                  <Typography
-                    sx={{
-                      // padding: "0.5%",
-                      fontSize: 29,
-                      // display: "flex",
-                      // justifyContent: "flex-end",
-
-                      // marginRight: "1%",
-                    }}
                   >
-                    {/* <Typography sx={{ padding: "0.5%", fontSize: 19, display: 'flex' }}> */}
-                    View More
-                  </Typography>
-                  {/* </Link> */}
+                    <Typography
+                      sx={{
+                        // padding: "0.5%",
+                        fontSize: 29,
+                        // display: "flex",
+                        // justifyContent: "flex-end",
+
+                        // marginRight: "1%",
+                      }}
+                    >
+                      {/* <Typography sx={{ padding: "0.5%", fontSize: 19, display: 'flex' }}> */}
+                      View More
+                    </Typography>
+                  </Link>
                 </Box>
 
                 <div
@@ -379,7 +314,9 @@ const AnimeVoiceActorPage = (info: VoiceActorProps) => {
               </div>
             </div>
           </div>
+          V
         </div>
+        V
       </div>
     </div>
   );

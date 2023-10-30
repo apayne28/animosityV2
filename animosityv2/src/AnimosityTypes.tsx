@@ -203,6 +203,7 @@ export type AnimeCharacters = {
   character: AnimeCharacter;
   role: string;
   favorites: number;
+  voice_actors: [];
 };
 
 export type AnimeCharacter = {
