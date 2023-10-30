@@ -30,11 +30,13 @@ const MangaInfoMainContent = (info: MangaInfoMainConfigProps) => {
       <div className={styles.anime_info_content_guts}>
         <div>
           <h3>Synopsis</h3>
-          <Typography paragraph>{mangaData.synopsis}</Typography>
+          <Typography paragraph sx={{ whiteSpace: "pre-line" }}>
+            {mangaData.synopsis}
+          </Typography>
         </div>
         <div>
           <h3>Background</h3>
-          <Typography>
+          <Typography sx={{ whiteSpace: "pre-line" }}>
             {mangaData.background ? mangaData.background : "N/A"}
           </Typography>
         </div>

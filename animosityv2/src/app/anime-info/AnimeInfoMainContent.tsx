@@ -45,11 +45,13 @@ const AnimeInfoMainContent = (info: AnimeInfoMainConfigProps) => {
         )}
         <div>
           <h3>Synopsis</h3>
-          <Typography paragraph>{animeData.synopsis}</Typography>
+          <Typography paragraph sx={{ whiteSpace: "pre-line" }}>
+            {animeData.synopsis}
+          </Typography>
         </div>
         <div>
           <h3>Background</h3>
-          <Typography>
+          <Typography sx={{ whiteSpace: "pre-line" }}>
             {animeData.background ? animeData.background : "N/A"}
           </Typography>
         </div>
