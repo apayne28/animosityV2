@@ -4,12 +4,11 @@ import React from "react";
 import Nav from "react-bootstrap/esm/Nav";
 
 import styles from "../anime-info/styles.module.css";
-import { AnimeVoiceActor, Person } from "../../AnimosityTypes";
+import {  Person } from "../../AnimosityTypes";
 
 interface VoiceActorDetailsConfigProps {
-  voiceActor: AnimeVoiceActor;
-  //   roles: any;
-  //   animeography: any;
+  voiceActor: Person;
+
 }
 const VoiceActorDetails = (info: VoiceActorDetailsConfigProps) => {
   console.log(info.voiceActor.mal_id);
@@ -19,12 +18,7 @@ const VoiceActorDetails = (info: VoiceActorDetailsConfigProps) => {
         <Nav.Item>
           <Link
             data-testid='anime-info-anime-details-bar-details'
-            // onClick={(e) => {
-            //   navigate("/anime-info", {
-            //     state: { animeId: location.state.animeId },
-            //   });
-            //   window.location.reload();
-            // }}
+    
             href={{
               pathname: "/voice-actor-page",
               query: {
@@ -45,12 +39,6 @@ const VoiceActorDetails = (info: VoiceActorDetailsConfigProps) => {
         <Nav.Item>
           <Link
             data-testid='anime-info-anime-details-bar-characters'
-            // to='/anime-character-list-page'
-            // state={{
-            //   animeId: props.animeId,
-            //   animeRecList: props.animeRecList,
-            //   charList: props.charList,
-            // }}
             href={{
               pathname: "/voice-actor-role-list",
               query: {
@@ -68,34 +56,28 @@ const VoiceActorDetails = (info: VoiceActorDetailsConfigProps) => {
           </Link>
         </Nav.Item>
 
-        {/* {info?.animeography && info.animeography.length > 0 && (
+        {info?.voiceActor.voices && info.voiceActor.voices.length > 0 && (
           <Nav.Item>
-            {/* <Link
+            <Link
               data-testid='anime-info-anime-details-bar-recommendations'
-              //   to='/anime-recs-page'
-              //   state={{
-              //     animeId: props.animeId,
-              //     animeRecList: props.animeRecList,
-              //     charList: props.charList,
-              //   }}
-              //   onClick={(e) => console.log(location, props)}
+         
               href={{
-                pathname: "/recommended-anime-list",
+                pathname: "/voice-actor-animeography",
                 query: {
-                  id: info.animeData.mal_id,
-                  title: info.animeData.title,
+                  id: info.voiceActor.mal_id,
+                  title: `${info.voiceActor.name} Animeography`,
                 },
               }}
-            > */}
-        <Typography
-          className={styles.anime_info_content_navbar_items}
-          sx={{ fontSize: 28 }}
-        >
-          Recommendations
-        </Typography>
-        {/* </Link> */}
-        {/* </Nav.Item> */}
-        {/* )}  */}
+            >
+              <Typography
+                className={styles.anime_info_content_navbar_items}
+                sx={{ fontSize: 28 }}
+              >
+                Animeography
+              </Typography>
+            </Link>
+          </Nav.Item>
+        )}
       </Nav>
     </Box>
   );

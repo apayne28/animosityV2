@@ -237,15 +237,17 @@ const AnimeVoiceActorPage = (info: VoiceActorProps) => {
                 >
                   <h3>Animeography</h3>
 
-                  {/* <Link
-                    to='/voice-actor-anime-list-page'
-                    state={{
-                      roleList: filteredVoiceRoles,
-                      voiceActor: voiceActor.mal_id,
-                      animeList: filteredAnime,
-                    }}
+                  <Link
+              
                     style={{ textDecoration: "none" }}
-                  > */}
+                    href={{
+                      pathname: "/voice-actor-animeography",
+                      query: {
+                        id: info.voiceActor.mal_id,
+                        title: `${info.voiceActor.name} Animeography`,
+                      }
+                    }}
+                  >
                   <Typography
                     sx={{
                       // padding: "0.5%",
@@ -259,7 +261,7 @@ const AnimeVoiceActorPage = (info: VoiceActorProps) => {
                     {/* <Typography sx={{ padding: "0.5%", fontSize: 19, display: 'flex' }}> */}
                     View More
                   </Typography>
-                  {/* </Link> */}
+                  </Link>
                 </Box>
 
                 <div

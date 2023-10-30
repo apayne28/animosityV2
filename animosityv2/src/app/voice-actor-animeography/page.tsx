@@ -1,11 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 
-import styles from "./styles.module.css";
+import styles from "../anime-info/styles.module.css";
+
 import { Metadata, ResolvingMetadata } from "next";
-import AnimeVoiceActorPage from "./AnimeVoiceActorPage";
 
+import VoiceActorSideContent from "../voice-actor-page/VoiceActorSideContent";
+import VoiceActorAnimeographyPage from "./VoiceActorAnimeographyPage";
 
 export const dynamic = "force-dynamic";
+
 type Props = {
   params: { id: string };
   searchParams: { [key: string]: string | string[] | undefined };
@@ -17,6 +20,7 @@ export async function generateMetadata(
 ): Promise<Metadata> {
   // read route params
   const title = searchParams?.title ?? "AnimosityV2";
+  console.log("title", title);
 
   // optionally access and extend (rather than replace) parent metadata
 
@@ -24,6 +28,7 @@ export async function generateMetadata(
     title: title,
   };
 }
+
 async function getVoiceActor(actorId: string | string[] | null) {
   try {
     const actorTemp = await fetch(
@@ -41,11 +46,23 @@ const page = async ({ params, searchParams }: Props) => {
 
   const voiceActorData = getVoiceActor(id);
 
-  const [actor] = await Promise.all([voiceActorData]);
-
+  const [voiceActor] = await Promise.all([voiceActorData]);
   return (
-    <div>
-      <AnimeVoiceActorPage voiceActor={actor} />
+    <div className={styles.anime_info_content_container}>
+      <VoiceActorSideContent voiceActor={voiceActor} />
+
+      {/* <AnimeInfoMainContent
+        animeData={anime}
+        animeCharacterListData={characters}
+        recommendedAnimeData={recommendations}
+      /> */}
+      {/* <AnimeCharacterListPage
+        animeData={anime}
+        characterList={characters}
+        recommendedAnime={recommendations}
+      /> */}
+      {/* <VoiceActorRoleListPage voiceActor={voiceActor} /> */}
+      <VoiceActorAnimeographyPage voiceActor={voiceActor} />
     </div>
   );
 };

@@ -14,11 +14,11 @@ import styles from "../anime-info/styles.module.css";
 
 import VoiceActorDetails from "../voice-actor-page/VoiceActorDetails";
 
-interface AnimeCharacterListProps {
+interface VoiceActorRoleListProps {
   voiceActor: Person;
 }
 
-const VoiceActorRoleListPage = (info: AnimeCharacterListProps) => {
+const VoiceActorRoleListPage = (info: VoiceActorRoleListProps) => {
   let windowSize = window.innerWidth;
 
   const [columnSize, setColumnSize] = useState<number>();
