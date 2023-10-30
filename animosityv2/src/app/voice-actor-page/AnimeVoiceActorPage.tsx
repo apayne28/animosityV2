@@ -35,32 +35,42 @@ const AnimeVoiceActorPage = (info: VoiceActorProps) => {
     { width: 3008, itemsToShow: 8, itemsToScroll: 8 },
   ];
 
-  let filteredVoiceRoles;
-  let filteredAnime;
+  // let filteredVoiceRoles = voiceRoles
+  //   .filter(
+  //     (value, index, self) =>
+  //       index ===
+  //       self.findIndex(
+  //         (t) =>
+  //           t.character.name === value.character.name &&
+  //           t.character.name === value.character.name
+  //       )
+  //   )
+  //   .sort((a, b) => a.role === "main");
 
-  if (voiceRoles && voiceRoles.length > 0) {
-    filteredVoiceRoles = voiceRoles
-      .filter(
-        (value, index, self) =>
-          index ===
-          self.findIndex(
-            (t) =>
-              t.character.name === value.character.name &&
-              t.character.name === value.character.name
-          )
-      )
-      .sort((a, b) => a.role === "main");
-
-    filteredAnime = filteredVoiceRoles.filter(
+  let filteredVoiceRoles = voiceRoles
+    .filter(
       (value, index, self) =>
         index ===
-        self.findIndex(
-          (t) =>
-            t.anime.title === value.anime.title &&
-            t.anime.title === value.anime.title
-        )
-    );
-  }
+        self.findIndex((t) => t.character.name === value.character.name)
+    )
+    .sort((a, b) => {
+      // You need to provide a proper comparison function here
+      // to sort based on your criteria. For example, if you want to sort by role:
+      if (a.role < b.role) return -1;
+      if (a.role > b.role) return 1;
+      return 0;
+    });
+
+  let filteredAnime = filteredVoiceRoles.filter(
+    (value, index, self) =>
+      index ===
+      self.findIndex(
+        (t) =>
+          t.anime.title === value.anime.title &&
+          t.anime.title === value.anime.title
+      )
+  );
+
   return (
     <div>
       <Box>
