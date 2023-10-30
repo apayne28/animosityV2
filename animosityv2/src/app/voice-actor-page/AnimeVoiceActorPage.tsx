@@ -12,7 +12,7 @@ import {
 } from "@mui/material";
 import Carousel from "@itseasy21/react-elastic-carousel";
 import styles from "../anime-info/styles.module.css";
-
+import TextExpander from "react-text-expander";
 import Link from "next/link";
 import { Person } from "../../AnimosityTypes";
 import VoiceActorDetails from "./VoiceActorDetails";
@@ -118,8 +118,26 @@ const AnimeVoiceActorPage = (info: VoiceActorProps) => {
                         keepNewLines={true}
                         style={{ fontSize: "80" }}
                       > */}
+                      <TextExpander
+                        lines={15}
+                        showLessLabel='(Less)'
+                        showMoreLabel='(More)'
+                        isExpanded={false}
+                        buttonStyle={{
+                          background: "none",
+                          // color: "inherit",
+                          textDecoration: "underline",
+                          border: "none",
+                          padding: 0,
+                          font: "inherit",
+                          cursor: "pointer",
+                          outline: "inherit",
+                          color: "#0b6ffd",
+                        }}
+                      >
+                        {voiceActor.about}
+                      </TextExpander>
 
-                      {voiceActor.about}
                       {/* </ShowMoreText> */}
                     </Typography>
                   </div>

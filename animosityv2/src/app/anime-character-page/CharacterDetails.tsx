@@ -35,26 +35,27 @@ const CharacterDetails = (info: AnimeCharacterProps) => {
           </Link>
         </Nav.Item>
 
-        <Nav.Item>
-          <Link
-            data-testid='anime-info-anime-details-bar-characters'
-            href={{
-              pathname: "/anime-character-voice-actor-list",
-              query: {
-                id: animeCharacter.mal_id,
-                title: `${animeCharacter.name}'s Voice Actors`,
-              },
-            }}
-          >
-            <Typography
-              className={styles.anime_info_content_navbar_items}
-              sx={{ fontSize: 28 }}
+        {animeCharacter.voices && animeCharacter.voices.length > 0 && (
+          <Nav.Item>
+            <Link
+              data-testid='anime-info-anime-details-bar-characters'
+              href={{
+                pathname: "/anime-character-voice-actor-list",
+                query: {
+                  id: animeCharacter.mal_id,
+                  title: `${animeCharacter.name}'s Voice Actors`,
+                },
+              }}
             >
-              Voice Actors
-            </Typography>
-          </Link>
-        </Nav.Item>
-
+              <Typography
+                className={styles.anime_info_content_navbar_items}
+                sx={{ fontSize: 28 }}
+              >
+                Voice Actors
+              </Typography>
+            </Link>
+          </Nav.Item>
+        )}
         {animeCharacter.anime && animeCharacter.anime.length > 0 && (
           <Nav.Item>
             <Link

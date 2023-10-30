@@ -20,6 +20,7 @@ import {
 import Link from "next/link";
 import AnimeCharacterSideContent from "./AnimeCharacterSideContent";
 import CharacterDetails from "./CharacterDetails";
+import TextExpander from "react-text-expander";
 
 interface AnimeCharacterProps {
   character: any;
@@ -101,8 +102,26 @@ const AnimeCharacterPage = (info: AnimeCharacterProps) => {
                     keepNewLines={true}
                     style={{ fontSize: "80" }}
                   > */}
-                  {animeCharacter.about}
-                  {/* </ShowMoreText> */}
+                  <TextExpander
+                    lines={15}
+                    showLessLabel='(Less)'
+                    showMoreLabel='(More)'
+                    isExpanded={false}
+                    buttonStyle={{
+                      background: "none",
+                      // color: "inherit",
+                      textDecoration: "underline",
+                      border: "none",
+                      padding: 0,
+                      font: "inherit",
+                      cursor: "pointer",
+                      outline: "inherit",
+                      color: "#0b6ffd",
+                    }}
+                  >
+                    {animeCharacter.about}
+                    {/* </ShowMoreText> */}
+                  </TextExpander>
                 </Typography>
 
                 <Divider sx={{ paddingTop: 2 }} />
