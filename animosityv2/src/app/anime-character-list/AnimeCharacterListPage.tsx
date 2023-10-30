@@ -10,6 +10,7 @@ import React, { useEffect, useState } from "react";
 import { AnimeCharacters } from "../../AnimosityTypes";
 import styles from "../anime-info/styles.module.css";
 import AnimeInfoDetails from "../anime-info/AnimeInfoDetails";
+import Link from "next/link";
 
 interface AnimeCharacterListProps {
   characterList: any;
@@ -91,11 +92,17 @@ const AnimeCharacterListPage = (info: AnimeCharacterListProps) => {
                     backgroundColor: "white",
                   }}
                 >
-                  {/* <Link
-                    to='/character-profile'
-                    state={{ characterId: characterEntry.mal_id }}
+                  <Link
+                   
                     data-testid={`anime-info-page-character-list-entry-${characterEntry.name}`}
-                  > */}
+                      href={{
+                      pathname: "/anime-character-page",
+                      query: {
+                        id: characterEntry.mal_id,
+                        title: characterEntry.name,
+                      },
+                    }}
+                  >
                   <ImageListItem>
                     <Box
                       component='img'
@@ -108,7 +115,7 @@ const AnimeCharacterListPage = (info: AnimeCharacterListProps) => {
                       title={`${characterEntry.name} (${character.role})`}
                     />
                   </ImageListItem>
-                  {/* </Link> */}
+                  </Link>
                 </Grid>
               );
             })}

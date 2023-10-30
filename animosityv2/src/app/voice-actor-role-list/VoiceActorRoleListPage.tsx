@@ -7,15 +7,11 @@ import {
   ImageListItemBar,
 } from "@mui/material";
 import React, { useEffect, useState } from "react";
-import {
-  AnimeCharacter,
-  AnimeCharacters,
-  AnimeVoiceActor,
-  Person,
-  PersonVoices,
-} from "../../AnimosityTypes";
+import Link from "next/link";
+
+import { Person, PersonVoices } from "../../AnimosityTypes";
 import styles from "../anime-info/styles.module.css";
-import AnimeInfoDetails from "../anime-info/AnimeInfoDetails";
+
 import VoiceActorDetails from "../voice-actor-page/VoiceActorDetails";
 
 interface AnimeCharacterListProps {
@@ -110,24 +106,29 @@ const VoiceActorRoleListPage = (info: AnimeCharacterListProps) => {
                     backgroundColor: "white",
                   }}
                 >
-                  {/* <Link
-                    to='/character-profile'
-                    state={{ characterId: characterEntry.mal_id }}
+                  <Link
                     data-testid={`anime-info-page-character-list-entry-${characterEntry.name}`}
-                  > */}
-                  <ImageListItem>
-                    <Box
-                      component='img'
-                      sx={{ width: "100%", height: "100%" }}
-                      src={characterEntry.images.jpg.image_url}
-                      alt={characterEntry.name}
-                    />
+                    href={{
+                      pathname: "/anime-character-page",
+                      query: {
+                        id: characterEntry.mal_id,
+                        title: characterEntry.name,
+                      },
+                    }}
+                  >
+                    <ImageListItem>
+                      <Box
+                        component='img'
+                        sx={{ width: "100%", height: "100%" }}
+                        src={characterEntry.images.jpg.image_url}
+                        alt={characterEntry.name}
+                      />
 
-                    <ImageListItemBar
-                      title={`${characterEntry.name} (${character.role})`}
-                    />
-                  </ImageListItem>
-                  {/* </Link> */}
+                      <ImageListItemBar
+                        title={`${characterEntry.name} (${character.role})`}
+                      />
+                    </ImageListItem>
+                  </Link>
                 </Grid>
               );
             })}
