@@ -43,12 +43,6 @@ const MangaInfoDetails = (info: MangaInfoMainConfigProps) => {
         <Nav.Item>
           <Link
             data-testid='anime-info-anime-details-bar-characters'
-            // to='/anime-character-list-page'
-            // state={{
-            //   animeId: props.animeId,
-            //   animeRecList: props.animeRecList,
-            //   charList: props.charList,
-            // }}
             href={{
               pathname: "/manga-character-list",
               query: {

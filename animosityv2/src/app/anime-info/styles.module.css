@@ -16,11 +16,11 @@
 }
 
 .anime_info_main_content_container {
-  background-color: white;
+  /* background-color: white; */
   /* border: 4px solid black; */
 
-  /* margin-top: 5%; */
-  /* margin-bottom: 5%; */
+  margin-top: 5%;
+  margin-bottom: 5%;
 
   width: 90%;
 
@@ -140,6 +140,10 @@
 .anime_recs_content {
   width: 80%;
   margin: auto;
+}
+
+.anime_info_content_guts {
+  background-color: white;
 }
 
 .anime_info_content_guts h3 {

@@ -27,72 +27,74 @@ const AnimeInfoMainContent = (info: AnimeInfoMainConfigProps) => {
         animeCharacterListData={characterData}
         recommendedAnimeData={recommendedAnimeData}
       />
-      {animeData.trailer.url && (
-        <div>
-          {/* <a href={info.trailer.url} target='_blank' rel='noreferrer'>
+      <div className={styles.anime_info_content_guts}>
+        {animeData.trailer.url && (
+          <div>
+            {/* <a href={info.trailer.url} target='_blank' rel='noreferrer'>
             <img
               className='anime-info-promo-image'
               src={info.trailer.images.small_image_url}
               alt={`${info.title}`}
             />
           </a> */}
-          <ReactPlayer
-            url={animeData.trailer.url}
-            style={{ display: "flex", margin: "auto", marginTop: "1%" }}
-          />
+            <ReactPlayer
+              url={animeData.trailer.url}
+              style={{ display: "flex", margin: "auto", marginTop: "1%" }}
+            />
+          </div>
+        )}
+        <div>
+          <h3>Synopsis</h3>
+          <Typography paragraph>{animeData.synopsis}</Typography>
         </div>
-      )}
-      <div>
-        <h3>Synopsis</h3>
-        <Typography paragraph>{animeData.synopsis}</Typography>
-      </div>
-      <div>
-        <h3>Background</h3>
-        <Typography>
-          {animeData.background ? animeData.background : "N/A"}
-        </Typography>
-      </div>
-      <div>
-        <h3>Related Anime</h3>
-        <AnimeInfoRelatedAnime relatedAnime={relatedAnime} />
-      </div>
-      <div>
-        <h3>
-          Characters{" "}
-          <Link
-            href={{
-              pathname: "/anime-character-list",
-              query: {
-                id: animeData.mal_id,
-                title: `${animeData.title} Characters`,
-              },
-            }}
-          >
-            View More
-          </Link>
-        </h3>
-
-        <AnimeInfoCharacters characters={characterData} />
-      </div>
-      {recommendedAnimeData.length > 0 && (
+        <div>
+          <h3>Background</h3>
+          <Typography>
+            {animeData.background ? animeData.background : "N/A"}
+          </Typography>
+        </div>
+        <div>
+          <h3>Related Anime</h3>
+          <AnimeInfoRelatedAnime relatedAnime={relatedAnime} />
+        </div>
         <div>
           <h3>
-            Recommended Anime{" "}
+            Characters{" "}
             <Link
               href={{
-                pathname: "/recommended-anime-list",
+                pathname: "/anime-character-list",
                 query: {
                   id: animeData.mal_id,
-                  title: `${animeData.title}`,
+                  title: `${animeData.title} Characters`,
                 },
               }}
             >
               View More
             </Link>
           </h3>
-          <AnimeInfoRecommendedAnime recommendations={recommendedAnimeData} />
+
+          <AnimeInfoCharacters characters={characterData} />
         </div>
-      )}
+        {recommendedAnimeData.length > 0 && (
+          <div>
+            <h3>
+              Recommended Anime{" "}
+              <Link
+                href={{
+                  pathname: "/recommended-anime-list",
+                  query: {
+                    id: animeData.mal_id,
+                    title: `${animeData.title}`,
+                  },
+                }}
+              >
+                View More
+              </Link>
+            </h3>
+            <AnimeInfoRecommendedAnime recommendations={recommendedAnimeData} />
+          </div>
+        )}
+      </div>
     </div>
   );
 };
