@@ -244,8 +244,8 @@ export type AnimeCharacterFull = {
   nicknames: string[];
   favorites: number;
   about: string;
-  anime: [];
-  manga: [];
+  anime: AnimeCharacterAnimeAppearances[];
+  manga: AnimeCharacterMangaAppearances[];
   voices: AnimeVoiceActors[];
 };
 
@@ -299,6 +299,7 @@ export type AnimeVoiceActor = {
     };
   };
   name: string;
+  language: string;
 };
 
 export type AnimeVoiceActors = {

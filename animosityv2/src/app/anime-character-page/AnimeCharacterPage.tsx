@@ -18,6 +18,8 @@ import {
   AnimeCharacterMangaAppearances,
 } from "../../AnimosityTypes";
 import Link from "next/link";
+import AnimeCharacterSideContent from "./AnimeCharacterSideContent";
+import CharacterDetails from "./CharacterDetails";
 
 interface AnimeCharacterProps {
   character: any;
@@ -49,76 +51,7 @@ const AnimeCharacterPage = (info: AnimeCharacterProps) => {
         className={styles.anime_characters_main}
         data-testid={`anime-character-main-${animeCharacter.name}`}
       >
-        <div
-          className={styles.anime_characters_side_content}
-          data-testid={`anime-character-side-content-${animeCharacter.name}`}
-        >
-          <ImageList cols={1}>
-            <ImageListItem>
-              <Box
-                component='img'
-                src={animeCharacter.images.jpg.image_url}
-                alt={animeCharacter.name}
-                sx={{ width: "100%", height: "100%", borderRadius: 1 }}
-              />
-              <ImageListItemBar
-                title={<Typography>{animeCharacter.name}</Typography>}
-                subtitle={
-                  <Typography>{`${
-                    animeCharacter.name_kanji
-                      ? `${animeCharacter.name_kanji}`
-                      : ""
-                  }`}</Typography>
-                }
-              />
-            </ImageListItem>
-          </ImageList>
-
-          <div className={styles.anime_characters_nickname_container}>
-            {animeCharacter.nicknames.length > 0 ? (
-              <Grid item sx={{ paddingBottom: 5 }}>
-                <Typography
-                  sx={{
-                    backgroundColor: "#59C9A5",
-                    padding: "2%",
-                    borderRadius: "1%",
-                    fontSize: 23,
-                    opacity: "80%",
-                  }}
-                >
-                  Nicknames:
-                </Typography>
-                {animeCharacter.nicknames.map((nicknames) => {
-                  return (
-                    <Typography sx={{ padding: "2%", fontSize: 19 }}>
-                      {nicknames}
-                    </Typography>
-                  );
-                })}
-              </Grid>
-            ) : (
-              ""
-            )}
-          </div>
-          <div className={styles.anime_character_members_number}>
-            <Typography
-              sx={{
-                backgroundColor: "#59C9A5",
-                padding: "2%",
-                borderRadius: "1%",
-                fontSize: 23,
-                opacity: "80%",
-              }}
-            >
-              Member Favorites:
-            </Typography>
-            <Typography
-              sx={{ padding: "2%", fontSize: 25 }}
-            >{`${animeCharacter.favorites.toLocaleString(
-              "en-US"
-            )}`}</Typography>
-          </div>
-        </div>
+        <AnimeCharacterSideContent character={animeCharacter} />
         <div className={styles.anime_character_main_info_container}>
           <div>
             {/* <CharacterDetails
@@ -127,6 +60,7 @@ const AnimeCharacterPage = (info: AnimeCharacterProps) => {
               animeList={animeCharacter.anime}
               mangaList={animeCharacter.manga}
             /> */}
+            <CharacterDetails character={animeCharacter} />
           </div>
           <div className={styles.anime_info_character_info_content}>
             <div className={styles.anime_character_name_header}>
@@ -154,7 +88,7 @@ const AnimeCharacterPage = (info: AnimeCharacterProps) => {
                 <h3>Background</h3>
 
                 <Typography
-                  sx={{ margin: "1%", fontSize: 22 }}
+                  sx={{ margin: "1%", fontSize: 22, whiteSpace: "pre-line" }}
                   data-testid={`anime-character-${animeCharacter.name}-background`}
                 >
                   {/* <ShowMoreText
@@ -186,27 +120,26 @@ const AnimeCharacterPage = (info: AnimeCharacterProps) => {
                       }}
                     >
                       <h3>Voice Actors</h3>
-                      {/* <Link
+                      <Link
                         data-testid={`anime-character-${animeCharacter.name}-voice-actor-list-view-more`}
-                        to='/character-page-voice-actor-list'
-                        state={{
-                          voiceActors: animeCharacter.voices,
-                          characterId: animeCharacter.mal_id,
-
-                          animeList: animeCharacter.anime,
-                          mangaList: animeCharacter.manga,
+                        href={{
+                          pathname: "/anime-character-voice-actor-list",
+                          query: {
+                            id: animeCharacter.mal_id,
+                            title: `${animeCharacter.name}'s Voice Actors`,
+                          },
                         }}
                         style={{ textDecoration: "none" }}
-                      > */}
-                      <Typography
-                        sx={{
-                          fontSize: 29,
-                          //   marginTop: "17%",
-                        }}
                       >
-                        View More
-                      </Typography>
-                      {/* </Link> */}
+                        <Typography
+                          sx={{
+                            fontSize: 29,
+                            //   marginTop: "17%",
+                          }}
+                        >
+                          View More
+                        </Typography>
+                      </Link>
                     </Box>
                     <div
                       className={styles.anime_character_voice_actors}
@@ -230,39 +163,42 @@ const AnimeCharacterPage = (info: AnimeCharacterProps) => {
                               <div>
                                 <Link
                                   data-testid={`anime-character-${animeCharacter.name}-voice-actor-${actor.person.name}`}
-                                 
-                                         href={{
-                      pathname: "/voice-actor-page",
-                      query: {
-                        id: actor.person.mal_id,
-                        title: actor.person.name,
-                      },
-                    }}
+                                  href={{
+                                    pathname: "/voice-actor-page",
+                                    query: {
+                                      id: actor.person.mal_id,
+                                      title: actor.person.name,
+                                    },
+                                  }}
                                 >
-                                <ImageList cols={1} rowHeight={400}>
-                                  <ImageListItem>
-                                    <Box
-                                      component='img'
-                                      src={actor.person.images.jpg.image_url}
-                                      alt={actor.person.name}
-                                      sx={{
-                                        width: "100%",
-                                        height: "100%",
-                                        borderRadius: 1,
-                                      }}
-                                    />
-                                    <ImageListItemBar
-                                      title={
-                                        <Typography>
-                                          {actor.person.name}
-                                        </Typography>
-                                      }
-                                      subtitle={
-                                        <Typography>{`Language: ${actor.language}`}</Typography>
-                                      }
-                                    />
-                                  </ImageListItem>
-                                </ImageList>
+                                  <ImageList cols={1} rowHeight={400}>
+                                    <ImageListItem>
+                                      <Box
+                                        component='img'
+                                        src={actor.person.images.jpg.image_url}
+                                        alt={actor.person.name}
+                                        sx={{
+                                          width: "100%",
+                                          height: "100%",
+                                          borderRadius: 1,
+                                        }}
+                                      />
+                                      <ImageListItemBar
+                                        title={
+                                          <Typography>
+                                            {actor.person.name
+                                              .split(",")
+                                              .map((part) => part.trim())
+                                              .reverse()
+                                              .join(" ")}
+                                          </Typography>
+                                        }
+                                        subtitle={
+                                          <Typography>{`Language: ${actor.language}`}</Typography>
+                                        }
+                                      />
+                                    </ImageListItem>
+                                  </ImageList>
                                 </Link>
                               </div>
                             );
@@ -271,8 +207,7 @@ const AnimeCharacterPage = (info: AnimeCharacterProps) => {
                       </div>
                     </div>
 
-                                      <Divider />
-                                      
+                    <Divider />
                   </div>
                 )}
 
@@ -290,28 +225,27 @@ const AnimeCharacterPage = (info: AnimeCharacterProps) => {
                     >
                       <h3>Animeography</h3>
 
-                      {/* <Link
+                      <Link
                         data-testid={`anime-character-${animeCharacter.name}-animeography-list-view-more`}
-                        to='/character-page-anime-list'
-                        state={{
-                          voiceActors: animeCharacter.voices,
-                          characterId: animeCharacter.mal_id,
-
-                          animeList: animeCharacter.animeo,
-                          mangaList: animeCharacter.manga,
+                        href={{
+                          pathname: "/anime-character-anime-list",
+                          query: {
+                            id: animeCharacter.mal_id,
+                            title: `${animeCharacter.name} Anime Appearances`,
+                          },
                         }}
                         style={{ textDecoration: "none" }}
-                      > */}
-                      <Typography
-                        sx={{
-                          fontSize: 29,
-
-                          //   marginTop: "17%",
-                        }}
                       >
-                        View More
-                      </Typography>
-                      {/* </Link> */}
+                        <Typography
+                          sx={{
+                            fontSize: 29,
+
+                            //   marginTop: "17%",
+                          }}
+                        >
+                          View More
+                        </Typography>
+                      </Link>
                     </Box>
                     <div
                       className={styles.anime_character_voice_actors}
@@ -390,28 +324,27 @@ const AnimeCharacterPage = (info: AnimeCharacterProps) => {
                     >
                       <h3>Mangaography</h3>
 
-                      {/* <Link
+                      <Link
                         data-testid={`anime-character-${animeCharacter.name}-mangaography-view-more`}
-                        to='/character-page-manga-list'
-                        state={{
-                          voiceActors: animeCharacter.voices,
-                          characterId: animeCharacter.mal_id,
-
-                          animeList: animeCharacter.anime,
-                          mangaList: animeCharacter.manga,
+                        href={{
+                          pathname: "/anime-character-manga-list",
+                          query: {
+                            id: animeCharacter.mal_id,
+                            title: `${animeCharacter.name} Anime Appearances`,
+                          },
                         }}
                         style={{ textDecoration: "none" }}
-                      > */}
-                      <Typography
-                        sx={{
-                          fontSize: 29,
-
-                          //   marginTop: "17%",
-                        }}
                       >
-                        View More
-                      </Typography>
-                      {/* </Link> */}
+                        <Typography
+                          sx={{
+                            fontSize: 29,
+
+                            //   marginTop: "17%",
+                          }}
+                        >
+                          View More
+                        </Typography>
+                      </Link>
                     </Box>
 
                     <div
@@ -488,6 +421,7 @@ const AnimeCharacterPage = (info: AnimeCharacterProps) => {
               </div>
             </div>
           </div>
+          A
         </div>
       </div>
     </div>

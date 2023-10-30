@@ -93,28 +93,35 @@ const AnimeCharacterListPage = (info: AnimeCharacterListProps) => {
                   }}
                 >
                   <Link
-                   
                     data-testid={`anime-info-page-character-list-entry-${characterEntry.name}`}
-                      href={{
+                    href={{
                       pathname: "/anime-character-page",
                       query: {
                         id: characterEntry.mal_id,
-                        title: characterEntry.name,
+                        title: characterEntry.name .split(",")
+                          .map((part) => part.trim())
+                          .reverse()
+                          .join(" "),
                       },
                     }}
                   >
-                  <ImageListItem>
-                    <Box
-                      component='img'
-                      sx={{ width: "100%", height: "100%" }}
-                      src={characterEntry.images.jpg.image_url}
-                      alt={characterEntry.name}
-                    />
+                    <ImageListItem>
+                      <Box
+                        component='img'
+                        sx={{ width: "100%", height: "100%" }}
+                        src={characterEntry.images.jpg.image_url}
+                        alt={characterEntry.name}
+                      />
 
-                    <ImageListItemBar
-                      title={`${characterEntry.name} (${character.role})`}
-                    />
-                  </ImageListItem>
+                      <ImageListItemBar
+                        title={`${characterEntry.name
+                          .split(",")
+                          .map((part) => part.trim())
+                          .reverse()
+                          .join(" ")}`}
+                        subtitle={`Role: ${character.role}`}
+                      />
+                    </ImageListItem>
                   </Link>
                 </Grid>
               );

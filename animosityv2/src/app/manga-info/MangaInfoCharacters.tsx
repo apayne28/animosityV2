@@ -40,7 +40,11 @@ const MangaInfoCharacters = (info: MangaInfoCharactersConfigProps) => {
                     pathname: "/anime-character-page",
                     query: {
                       id: characterEntry.mal_id,
-                      title: characterEntry.name,
+                      title: characterEntry.name
+                        .split(",")
+                        .map((part) => part.trim())
+                        .reverse()
+                        .join(" "),
                     },
                   }}
                 >
@@ -53,7 +57,12 @@ const MangaInfoCharacters = (info: MangaInfoCharactersConfigProps) => {
                       width={300}
                     />
                     <ImageListItemBar
-                      title={characterEntry.name}
+                      title={characterEntry.name
+                        .split(",")
+                        .map((part) => part.trim())
+                        .reverse()
+                        .join(" ")}
+                      subtitle={`Role: ${character.role}`}
                       sx={{ borderRadius: 1 }}
                     />
                   </ImageListItem>

@@ -112,7 +112,11 @@ const VoiceActorRoleListPage = (info: VoiceActorRoleListProps) => {
                       pathname: "/anime-character-page",
                       query: {
                         id: characterEntry.mal_id,
-                        title: characterEntry.name,
+                        title: characterEntry.name
+                          .split(",")
+                          .map((part) => part.trim())
+                          .reverse()
+                          .join(" "),
                       },
                     }}
                   >
@@ -125,7 +129,12 @@ const VoiceActorRoleListPage = (info: VoiceActorRoleListProps) => {
                       />
 
                       <ImageListItemBar
-                        title={`${characterEntry.name} (${character.role})`}
+                        title={characterEntry.name
+                          .split(",")
+                          .map((part) => part.trim())
+                          .reverse()
+                          .join(" ")}
+                        subtitle={`Role: ${character.role}`}
                       />
                     </ImageListItem>
                   </Link>

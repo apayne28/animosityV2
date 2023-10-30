@@ -101,7 +101,13 @@ const AnimeVoiceActorPage = (info: VoiceActorProps) => {
                 <h3>Background</h3>
                 {voiceActor.about ? (
                   <div>
-                    <Typography sx={{ margin: "1%", fontSize: 22 }}>
+                    <Typography
+                      sx={{
+                        margin: "1%",
+                        fontSize: 22,
+                        whiteSpace: "pre-line",
+                      }}
+                    >
                       {/* <ShowMoreText
                         lines={15}
                         more='Show more'
@@ -112,6 +118,7 @@ const AnimeVoiceActorPage = (info: VoiceActorProps) => {
                         keepNewLines={true}
                         style={{ fontSize: "80" }}
                       > */}
+
                       {voiceActor.about}
                       {/* </ShowMoreText> */}
                     </Typography>
@@ -191,7 +198,11 @@ const AnimeVoiceActorPage = (info: VoiceActorProps) => {
                                   pathname: "/anime-character-page",
                                   query: {
                                     id: actor.character.mal_id,
-                                    title: actor.character.name,
+                                    title: actor.character.name
+                                      .split(",")
+                                      .map((part) => part.trim())
+                                      .reverse()
+                                      .join(" "),
                                   },
                                 }}
                               >
@@ -207,14 +218,12 @@ const AnimeVoiceActorPage = (info: VoiceActorProps) => {
                                     }}
                                   />
                                   <ImageListItemBar
-                                    title={
-                                      <Typography>
-                                        {actor.character.name}
-                                      </Typography>
-                                    }
-                                    subtitle={
-                                      <Typography>{`Role: ${actor.role}`}</Typography>
-                                    }
+                                    title={actor.character.name
+                                      .split(",")
+                                      .map((part) => part.trim())
+                                      .reverse()
+                                      .join(" ")}
+                                    subtitle={`Role: ${actor.role}`}
                                   />
                                 </ImageListItem>
                               </Link>
@@ -238,29 +247,28 @@ const AnimeVoiceActorPage = (info: VoiceActorProps) => {
                   <h3>Animeography</h3>
 
                   <Link
-              
                     style={{ textDecoration: "none" }}
                     href={{
                       pathname: "/voice-actor-animeography",
                       query: {
                         id: info.voiceActor.mal_id,
                         title: `${info.voiceActor.name} Animeography`,
-                      }
+                      },
                     }}
                   >
-                  <Typography
-                    sx={{
-                      // padding: "0.5%",
-                      fontSize: 29,
-                      // display: "flex",
-                      // justifyContent: "flex-end",
-                      // marginTop: "17%",
-                      // marginRight: "1%",
-                    }}
-                  >
-                    {/* <Typography sx={{ padding: "0.5%", fontSize: 19, display: 'flex' }}> */}
-                    View More
-                  </Typography>
+                    <Typography
+                      sx={{
+                        // padding: "0.5%",
+                        fontSize: 29,
+                        // display: "flex",
+                        // justifyContent: "flex-end",
+                        // marginTop: "17%",
+                        // marginRight: "1%",
+                      }}
+                    >
+                      {/* <Typography sx={{ padding: "0.5%", fontSize: 19, display: 'flex' }}> */}
+                      View More
+                    </Typography>
                   </Link>
                 </Box>
 
@@ -301,6 +309,7 @@ const AnimeVoiceActorPage = (info: VoiceActorProps) => {
                                   <ImageListItemBar
                                     title={appearances.anime.title}
                                     //   subtitle={`Role: ${appearances.role}`}
+                                    subtitle={`Role: ${appearances.role}`}
                                   />
                                 </ImageListItem>
                               </ImageList>

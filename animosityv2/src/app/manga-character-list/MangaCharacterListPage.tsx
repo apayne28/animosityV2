@@ -98,7 +98,11 @@ const AnimeCharacterListPage = (info: AnimeCharacterListProps) => {
                       pathname: "/anime-character-page",
                       query: {
                         id: characterEntry.mal_id,
-                        title: characterEntry.name,
+                        title: characterEntry.name
+                          .split(",")
+                          .map((part) => part.trim())
+                          .reverse()
+                          .join(" "),
                       },
                     }}
                     data-testid={`anime-info-page-character-list-entry-${characterEntry.name}`}
@@ -112,7 +116,12 @@ const AnimeCharacterListPage = (info: AnimeCharacterListProps) => {
                       />
 
                       <ImageListItemBar
-                        title={`${characterEntry.name} (${character.role})`}
+                        title={characterEntry.name
+                          .split(",")
+                          .map((part) => part.trim())
+                          .reverse()
+                          .join(" ")}
+                        subtitle={`Role: ${character.role}`}
                       />
                     </ImageListItem>
                   </Link>

@@ -7,17 +7,23 @@ import {
   ImageListItemBar,
 } from "@mui/material";
 import React, { useEffect, useState } from "react";
-import { Person, Recommendation } from "../../AnimosityTypes";
+import {
+  AnimeCharacterFull,
+  Person,
+  Recommendation,
+} from "../../AnimosityTypes";
 import styles from "../anime-info/styles.module.css";
 import Link from "next/link";
 import AnimeInfoDetails from "../anime-info/AnimeInfoDetails";
 import VoiceActorDetails from "../voice-actor-page/VoiceActorDetails";
+import CharacterDetails from "../anime-character-page/CharacterDetails";
 
-interface VoiceActorRoleListProps {
-  voiceActor: Person;
+interface AnimeCharacterProps {
+  character: any;
 }
 
-const AnimeRecommendationListPage = (info: VoiceActorRoleListProps) => {
+const AnimeCharacterVoiceActorListPage = (info: AnimeCharacterProps) => {
+  const animeCharacter: AnimeCharacterFull = info.character;
   let windowSize = window.innerWidth;
 
   const [columnSize, setColumnSize] = useState<number>();
@@ -69,29 +75,6 @@ const AnimeRecommendationListPage = (info: VoiceActorRoleListProps) => {
     }
   }, [columnSize, rowHeight, windowSize]);
 
-  let filteredVoiceRoles = info.voiceActor.voices
-    .filter(
-      (value, index, self) =>
-        index ===
-        self.findIndex((t) => t.character.name === value.character.name)
-    )
-    .sort((a, b) => {
-      // You need to provide a proper comparison function here
-      // to sort based on your criteria. For example, if you want to sort by role:
-      if (a.role < b.role) return -1;
-      if (a.role > b.role) return 1;
-      return 0;
-    });
-
-  let filteredAnime = filteredVoiceRoles.filter(
-    (value, index, self) =>
-      index ===
-      self.findIndex(
-        (t) =>
-          t.anime.title === value.anime.title &&
-          t.anime.title === value.anime.title
-      )
-  );
   return (
     <Box data-testid='anime-info-anime-recs-list-page'>
       {/* <NavigationBar /> */}
@@ -112,10 +95,10 @@ const AnimeRecommendationListPage = (info: VoiceActorRoleListProps) => {
             animeCharacterListData={info.characterList}
             recommendedAnimeData={info.recommendedAnime}
           /> */}
-          <VoiceActorDetails voiceActor={info.voiceActor} />
+          <CharacterDetails character={info.character} />
           <Grid container>
             <ImageList cols={columnSize} rowHeight={rowHeight}>
-              {filteredAnime.map((entry) => {
+              {animeCharacter.voices.map((entry) => {
                 return (
                   <Grid
                     item
@@ -128,20 +111,24 @@ const AnimeRecommendationListPage = (info: VoiceActorRoleListProps) => {
                     }}
                   >
                     <Link
-                      data-testid={`anime-info-anime-recs-list-page-${entry.anime.title}`}
+                      data-testid={`anime-info-anime-recs-list-page-${entry.person.name}`}
                       href={{
-                        pathname: "/anime-info",
+                        pathname: "/voice-actor-page",
                         query: {
-                          id: entry.anime.mal_id,
-                          title: entry.anime.title,
+                          id: entry.person.mal_id,
+                          title: entry.person.name
+                            .split(",")
+                            .map((part) => part.trim())
+                            .reverse()
+                            .join(" "),
                         },
                       }}
                     >
                       <ImageListItem>
                         <Box
                           component='img'
-                          src={entry.anime.images.jpg.image_url}
-                          alt={entry.anime.title}
+                          src={entry.person.images.jpg.image_url}
+                          alt={entry.person.name}
                           sx={{
                             width: "100%",
                             height: "100%",
@@ -149,10 +136,12 @@ const AnimeRecommendationListPage = (info: VoiceActorRoleListProps) => {
                           }}
                         />
                         <ImageListItemBar
-                          title={entry.anime.title}
-                          subtitle={`Role: ${
-                            entry.role
-                          }`}
+                          title={entry.person.name
+                            .split(",")
+                            .map((part) => part.trim())
+                            .reverse()
+                            .join(" ")}
+                          subtitle={`Language: ${entry.language}`}
                         />
                       </ImageListItem>
                       <div></div>
@@ -169,4 +158,4 @@ const AnimeRecommendationListPage = (info: VoiceActorRoleListProps) => {
   );
 };
 
-export default AnimeRecommendationListPage;
+export default AnimeCharacterVoiceActorListPage;

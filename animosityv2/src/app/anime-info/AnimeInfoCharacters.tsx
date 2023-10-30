@@ -53,7 +53,12 @@ const AnimeInfoCharacters = (info: AnimeInfoCharactersConfigProps) => {
                       width={300}
                     />
                     <ImageListItemBar
-                      title={characterEntry.name}
+                      title={characterEntry.name
+                        .split(",")
+                        .map((part) => part.trim())
+                        .reverse()
+                        .join(" ")}
+                        subtitle={`Role: ${character.role}`}
                       sx={{ borderRadius: 1 }}
                     />
                   </Link>
