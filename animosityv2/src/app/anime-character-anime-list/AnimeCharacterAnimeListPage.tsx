@@ -7,16 +7,11 @@ import {
   ImageListItemBar,
 } from "@mui/material";
 import React, { useEffect, useState } from "react";
-import {
-  AnimeCharacterFull,
-  Person,
-  Recommendation,
-} from "../../AnimosityTypes";
+import { AnimeCharacterFull } from "../../AnimosityTypes";
 import styles from "../anime-info/styles.module.css";
 import Link from "next/link";
-import AnimeInfoDetails from "../anime-info/AnimeInfoDetails";
-import VoiceActorDetails from "../voice-actor-page/VoiceActorDetails";
 import CharacterDetails from "../anime-character-page/CharacterDetails";
+import Image from "next/image";
 
 interface AnimeCharacterProps {
   character: any;
@@ -77,24 +72,8 @@ const AnimeCharacterAnimeListPage = (info: AnimeCharacterProps) => {
 
   return (
     <Box data-testid='anime-info-anime-recs-list-page'>
-      {/* <NavigationBar /> */}
-
       <Box sx={{ display: "flex", marginTop: "2%" }}>
         <div className='anime-character-list-contents'>
-          {/* <AnimeInfoAnimeDetails
-            animeRecList={
-              animeRecommendationsList
-                ? animeRecommendationsList
-                : location.state.animeRecList
-            }
-            animeId={id}
-            charList={animeCharacterList}
-          /> */}
-          {/* <AnimeInfoDetails
-            animeData={info.animeData}
-            animeCharacterListData={info.characterList}
-            recommendedAnimeData={info.recommendedAnime}
-          /> */}
           <CharacterDetails character={info.character} />
           <Grid container>
             <ImageList cols={columnSize} rowHeight={rowHeight}>
@@ -121,7 +100,7 @@ const AnimeCharacterAnimeListPage = (info: AnimeCharacterProps) => {
                       }}
                     >
                       <ImageListItem>
-                        <Box
+                        {/* <Box
                           component='img'
                           src={entry.anime.images.jpg.image_url}
                           alt={entry.anime.title}
@@ -130,8 +109,19 @@ const AnimeCharacterAnimeListPage = (info: AnimeCharacterProps) => {
                             height: "100%",
                             borderRadius: 1,
                           }}
+                        /> */}
+                        <Image
+                          src={entry.anime.images.jpg.image_url}
+                          alt={entry.anime.title}
+                          width={0}
+                          height={0}
+                          sizes='100vw'
+                          style={{ width: "100%", height: "100%" }}
                         />
-                        <ImageListItemBar title={entry.anime.title} subtitle={`Role: ${entry.role}`}/>
+                        <ImageListItemBar
+                          title={entry.anime.title}
+                          subtitle={`Role: ${entry.role}`}
+                        />
                       </ImageListItem>
                       <div></div>
                     </Link>
@@ -142,7 +132,6 @@ const AnimeCharacterAnimeListPage = (info: AnimeCharacterProps) => {
           </Grid>
         </div>
       </Box>
-      {/* <footer class='footer' /> */}
     </Box>
   );
 };

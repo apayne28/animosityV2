@@ -9,6 +9,7 @@ import {
 import React from "react";
 import styles from "../anime-info/styles.module.css";
 import { AnimeCharacterFull } from "../../AnimosityTypes";
+import Image from "next/image";
 
 interface AnimeCharacterProps {
   character: any;
@@ -24,11 +25,19 @@ const AnimeCharacterSideContent = (info: AnimeCharacterProps) => {
     >
       <ImageList cols={1}>
         <ImageListItem>
-          <Box
+          {/* <Box
             component='img'
             src={animeCharacter.images.jpg.image_url}
             alt={animeCharacter.name}
             sx={{ width: "100%", height: "100%", borderRadius: 1 }}
+          /> */}
+          <Image
+            src={animeCharacter.images.jpg.image_url}
+            alt={animeCharacter.name}
+            width={0}
+            height={0}
+            sizes='100vw'
+            style={{ width: "100%", height: "100%" }}
           />
           <ImageListItemBar
             title={<Typography>{animeCharacter.name}</Typography>}

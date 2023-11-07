@@ -11,6 +11,7 @@ import React from "react";
 import Carousel from "@itseasy21/react-elastic-carousel";
 import styles from "../page.module.css";
 import { AnimeObject } from "../../AnimosityTypes";
+import Image from "next/image";
 
 interface MainpageProps {
   currentAnimeSeason: any;
@@ -71,12 +72,20 @@ const MainpageContents = (info: MainpageProps) => {
                       }}
                     >
                       <ImageListItem key={anime.mal_id}>
-                        <Box
+                        {/* <Box
                           component='img'
                           className='featured-anime-image'
                           src={anime.images.jpg.image_url}
                           alt={anime.title}
                           sx={{ width: "100%", height: "100%" }}
+                        /> */}
+                        <Image
+                          src={anime.images.jpg.image_url}
+                          alt={anime.title}
+                          width={0}
+                          height={0}
+                          sizes='100vw'
+                          style={{ width: "100%", height: "100%" }}
                         />
                         <ImageListItemBar title={anime.title} />
                       </ImageListItem>
@@ -130,12 +139,20 @@ const MainpageContents = (info: MainpageProps) => {
                       }}
                     >
                       <ImageListItem key={anime.mal_id} cols={1} rows={1}>
-                        <Box
+                        {/* <Box
                           component='img'
                           className='featured-anime-image'
                           src={anime.images.jpg.image_url}
                           alt={anime.title}
                           sx={{ width: "100%", height: "100%" }}
+                        /> */}
+                        <Image
+                          src={anime.images.jpg.image_url}
+                          alt={anime.title}
+                          width={0}
+                          height={0}
+                          sizes='100vw'
+                          style={{ width: "100%", height: "100%" }}
                         />
                         <ImageListItemBar title={anime.title} />
                       </ImageListItem>

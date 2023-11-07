@@ -31,19 +31,22 @@ const AnimeInfoSideContent = (info: AnimeInfoSideConfigProps) => {
     <div className={styles.anime_info_side_content}>
       <ImageList cols={1}>
         <ImageListItem>
-          <Box
+          {/* <Box
             component='img'
             src={animeData.images.jpg.image_url}
             alt={`${animeData.title} Poster`}
             sx={{ width: "100%", height: "100%" }}
-          />
+          /> */}
 
-          {/* <Image
+     
+          <Image
             src={animeData.images.jpg.image_url}
             alt={`${animeData.title} Poster`}
-            fill
-            sizes='100%'
-          /> */}
+            width={0}
+            height={0}
+            sizes='100vw'
+            style={{ width: "100%", height: "100%" }}
+          />
           <ImageListItemBar
             title={animeData.title}
             subtitle={

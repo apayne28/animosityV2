@@ -17,6 +17,7 @@ import Link from "next/link";
 import AnimeInfoDetails from "../anime-info/AnimeInfoDetails";
 import VoiceActorDetails from "../voice-actor-page/VoiceActorDetails";
 import CharacterDetails from "../anime-character-page/CharacterDetails";
+import Image from "next/image";
 
 interface AnimeCharacterProps {
   character: any;
@@ -121,7 +122,7 @@ const AnimeCharacterMangaListPage = (info: AnimeCharacterProps) => {
                       }}
                     >
                       <ImageListItem>
-                        <Box
+                        {/* <Box
                           component='img'
                           src={entry.manga.images.jpg.image_url}
                           alt={entry.manga.title}
@@ -130,8 +131,19 @@ const AnimeCharacterMangaListPage = (info: AnimeCharacterProps) => {
                             height: "100%",
                             borderRadius: 1,
                           }}
+                        /> */}
+                        <Image
+                          src={entry.manga.images.jpg.image_url}
+                          alt={entry.manga.title}
+                          width={0}
+                          height={0}
+                          sizes='100vw'
+                          style={{ width: "100%", height: "100%" }}
                         />
-                        <ImageListItemBar title={entry.manga.title} subtitle={`Role: ${entry.role}`} />
+                        <ImageListItemBar
+                          title={entry.manga.title}
+                          subtitle={`Role: ${entry.role}`}
+                        />
                       </ImageListItem>
                       <div></div>
                     </Link>

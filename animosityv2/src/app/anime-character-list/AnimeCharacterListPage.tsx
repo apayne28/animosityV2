@@ -11,6 +11,7 @@ import { AnimeCharacters } from "../../AnimosityTypes";
 import styles from "../anime-info/styles.module.css";
 import AnimeInfoDetails from "../anime-info/AnimeInfoDetails";
 import Link from "next/link";
+import Image from "next/image";
 
 interface AnimeCharacterListProps {
   characterList: any;
@@ -98,7 +99,8 @@ const AnimeCharacterListPage = (info: AnimeCharacterListProps) => {
                       pathname: "/anime-character-page",
                       query: {
                         id: characterEntry.mal_id,
-                        title: characterEntry.name .split(",")
+                        title: characterEntry.name
+                          .split(",")
                           .map((part) => part.trim())
                           .reverse()
                           .join(" "),
@@ -106,13 +108,20 @@ const AnimeCharacterListPage = (info: AnimeCharacterListProps) => {
                     }}
                   >
                     <ImageListItem>
-                      <Box
+                      {/* <Box
                         component='img'
                         sx={{ width: "100%", height: "100%" }}
                         src={characterEntry.images.jpg.image_url}
                         alt={characterEntry.name}
+                      /> */}
+                      <Image
+                        src={characterEntry.images.jpg.image_url}
+                        alt={characterEntry.name}
+                        width={0}
+                        height={0}
+                        sizes='100vw'
+                        style={{ width: "100%", height: "100%" }}
                       />
-
                       <ImageListItemBar
                         title={`${characterEntry.name
                           .split(",")

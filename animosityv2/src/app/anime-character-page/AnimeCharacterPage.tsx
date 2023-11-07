@@ -43,10 +43,7 @@ const AnimeCharacterPage = (info: AnimeCharacterProps) => {
   return (
     <div>
       <Box>
-        <div className='header-content'>
-          {/* <Header /> */}
-          {/* <NavigationBar /> */}
-        </div>
+        <div className='header-content'></div>
       </Box>
       <div
         className={styles.anime_characters_main}
@@ -55,12 +52,6 @@ const AnimeCharacterPage = (info: AnimeCharacterProps) => {
         <AnimeCharacterSideContent character={animeCharacter} />
         <div className={styles.anime_character_main_info_container}>
           <div>
-            {/* <CharacterDetails
-              characterId={animeCharacter.mal_id}
-              voiceActors={animeCharacter.voices}
-              animeList={animeCharacter.anime}
-              mangaList={animeCharacter.manga}
-            /> */}
             <CharacterDetails character={animeCharacter} />
           </div>
           <div className={styles.anime_info_character_info_content}>
@@ -153,7 +144,6 @@ const AnimeCharacterPage = (info: AnimeCharacterProps) => {
                         <Typography
                           sx={{
                             fontSize: 29,
-                            //   marginTop: "17%",
                           }}
                         >
                           View More
@@ -258,8 +248,6 @@ const AnimeCharacterPage = (info: AnimeCharacterProps) => {
                         <Typography
                           sx={{
                             fontSize: 29,
-
-                            //   marginTop: "17%",
                           }}
                         >
                           View More
@@ -357,8 +345,6 @@ const AnimeCharacterPage = (info: AnimeCharacterProps) => {
                         <Typography
                           sx={{
                             fontSize: 29,
-
-                            //   marginTop: "17%",
                           }}
                         >
                           View More
@@ -440,7 +426,6 @@ const AnimeCharacterPage = (info: AnimeCharacterProps) => {
               </div>
             </div>
           </div>
-          A
         </div>
       </div>
     </div>

@@ -52,13 +52,21 @@ const AnimeInfoCharacters = (info: AnimeInfoCharactersConfigProps) => {
                       height={400}
                       width={300}
                     />
+                    {/* <Image
+                      src={characterEntry.images.jpg.image_url}
+                      alt={characterEntry.name}
+                      width={0}
+                      height={0}
+                      sizes='100vw'
+                      style={{ width: "100%", height: "100%" }}
+                    /> */}
                     <ImageListItemBar
                       title={characterEntry.name
                         .split(",")
                         .map((part) => part.trim())
                         .reverse()
                         .join(" ")}
-                        subtitle={`Role: ${character.role}`}
+                      subtitle={`Role: ${character.role}`}
                       sx={{ borderRadius: 1 }}
                     />
                   </Link>
