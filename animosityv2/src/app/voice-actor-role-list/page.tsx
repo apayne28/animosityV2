@@ -50,17 +50,6 @@ const page = async ({ params, searchParams }: Props) => {
   return (
     <div className={styles.anime_info_content_container}>
       <VoiceActorSideContent voiceActor={voiceActor} />
-
-      {/* <AnimeInfoMainContent
-        animeData={anime}
-        animeCharacterListData={characters}
-        recommendedAnimeData={recommendations}
-      /> */}
-      {/* <AnimeCharacterListPage
-        animeData={anime}
-        characterList={characters}
-        recommendedAnime={recommendations}
-      /> */}
       <VoiceActorRoleListPage voiceActor={voiceActor} />
     </div>
   );

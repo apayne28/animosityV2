@@ -24,6 +24,7 @@ export async function generateMetadata(
     title: title,
   };
 }
+
 async function getAnime(animeId: string | string[] | null) {
   try {
     const animeTemp = await fetch(

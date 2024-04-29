@@ -75,15 +75,6 @@ const AnimeRecommendationListPage = (info: AnimeRecommendationListProps) => {
 
       <Box sx={{ display: "flex", marginTop: "2%" }}>
         <div className='anime-character-list-contents'>
-          {/* <AnimeInfoAnimeDetails
-            animeRecList={
-              animeRecommendationsList
-                ? animeRecommendationsList
-                : location.state.animeRecList
-            }
-            animeId={id}
-            charList={animeCharacterList}
-          /> */}
           <AnimeInfoDetails
             animeData={info.animeData}
             animeCharacterListData={info.characterList}
@@ -135,7 +126,6 @@ const AnimeRecommendationListPage = (info: AnimeRecommendationListProps) => {
           </Grid>
         </div>
       </Box>
-      {/* <footer class='footer' /> */}
     </Box>
   );
 };

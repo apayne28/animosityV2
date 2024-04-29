@@ -41,18 +41,6 @@ async function getAnime(animeId: string | string[] | null) {
   }
 }
 
-// async function getAnimeCharacters(animeId: string | string[] | null) {
-//   try {
-//     const characterTemp = await fetch(
-//       `https://api.jikan.moe/v4/anime/${animeId}/characters`
-//     ).then((res) => res.json());
-
-//     return characterTemp.data;
-//   } catch {
-//     console.log("Anime Character List not found");
-//   }
-// }
-
 async function getRecommendedAnime(animeId: string | string[] | null) {
   try {
     let recommendedAnimeTemp = await fetch(
@@ -80,11 +68,6 @@ const page = async ({ params, searchParams }: Props) => {
     <div className={styles.anime_info_content_container}>
       <AnimeInfoSideContent animeData={anime} />
 
-      {/* <AnimeInfoMainContent
-        animeData={anime}
-        animeCharacterListData={characters}
-        recommendedAnimeData={recommendations}
-      /> */}
       <AnimeRecommendationListPage
         animeData={anime}
         // charactersList={characters}

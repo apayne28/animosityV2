@@ -17,12 +17,6 @@ const MangaInfoDetails = (info: MangaInfoMainConfigProps) => {
         <Nav.Item>
           <Link
             data-testid='anime-info-anime-details-bar-details'
-            // onClick={(e) => {
-            //   navigate("/anime-info", {
-            //     state: { animeId: location.state.animeId },
-            //   });
-            //   window.location.reload();
-            // }}
             href={{
               pathname: "/manga-info",
               query: {
